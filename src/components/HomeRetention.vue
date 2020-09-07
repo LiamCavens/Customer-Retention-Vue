@@ -6,7 +6,7 @@
     <p class="home-retention-text">Added {{joinDate}}</p>
     <img class="home-retention-icon" src="../assets/icon_calendar_white.png" alt="calendarIcon" />
     <p class="home-retention-bold">Next Delivery</p>
-    <p class="home-retention-text">{{nextDelivery}}</p>
+    <p class="home-retention-text">{{nextDelivery | moment("dddd, Do MMMM YYYY")}}</p>
     <button class="btn-orange manage-btn">Manage Subscription</button>
     <button class="cancel-btn">Cancel Subscription</button>
   </div>
@@ -20,10 +20,20 @@ export default {
     return {
       status: "Active",
       joinDate: "13th March 2020",
-      nextDelivery: "29th September 2020",
+      nextDelivery: "",
     };
   },
-  methods: {},
+  methods: {
+    randomDate(startDate, endDate) {
+      return new Date(
+        startDate.getTime() +
+          Math.random() * (endDate.getTime() - startDate.getTime())
+      );
+    },
+  },
+  mounted() {
+    this.nextDelivery = this.randomDate(new Date(), new Date(2021, 12, 30));
+  },
 };
 </script>
 

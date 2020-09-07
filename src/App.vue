@@ -31,7 +31,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #00263a;
   height: 100vh;
   display: flex;
   flex-flow: column;
@@ -102,10 +102,43 @@ export default {
   background-image: linear-gradient(to bottom, #91b516, #789904);
 }
 
+.btn-orange {
+  font-family: Montserrat;
+  background: #ee7623;
+  background-image: -webkit-linear-gradient(top, #ee7623, #f37d29);
+  background-image: -moz-linear-gradient(top, #ee7623, #f37d29);
+  background-image: -ms-linear-gradient(top, #ee7623, #f37d29);
+  background-image: -o-linear-gradient(top, #ee7623, #f37d29);
+  background-image: linear-gradient(to bottom, #ee7623, #f37d29);
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 5px;
+  color: #ffffff;
+  height: 30px;
+  padding: 2px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  border: solid #d3671b 1px;
+  cursor: pointer;
+  text-align: center;
+  margin: 10px 10px 20px;
+}
+
+.btn-orange:hover {
+  border: solid #d3671b 1px;
+  background: #d3671b;
+  background-image: -webkit-linear-gradient(top, #f37d29, #ee7623);
+  background-image: -moz-linear-gradient(top, #f37d29, #ee7623);
+  background-image: -ms-linear-gradient(top, #f37d29, #ee7623);
+  background-image: -o-linear-gradient(top, #f37d29, #ee7623);
+  background-image: linear-gradient(to bottom, #f37d29, #ee7623);
+}
+
+.btn-orange:focus,
 .btn-green:focus {
   outline: none;
 }
 
+.btn-orange:active,
 .btn-green:active {
   box-shadow: inset 0px 4px 15px rgba(0, 0, 0, 0.2);
 }

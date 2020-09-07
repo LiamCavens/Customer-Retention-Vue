@@ -1,13 +1,18 @@
 <template>
   <div class="retention">
-    <div class="retention-components">Retention Template</div>
+    <div class="retention-components">
+      <HomeRetention />
+    </div>
   </div>
 </template>
 
 <script>
+import HomeRetention from "./HomeRetention";
 export default {
   name: "retentionv2",
-  components: {},
+  components: {
+    HomeRetention,
+  },
   props: {},
   data: () => {
     return {};
@@ -18,7 +23,7 @@ export default {
 
 <style>
 .retention {
-  background-color: #00263a;
+  background-color: white;
   color: #e1b77e;
   width: 100%;
   display: flex;
@@ -36,6 +41,7 @@ export default {
   display: flex;
   flex-direction: column;
   position: relative;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
 
 .slide-fade-enter-active {

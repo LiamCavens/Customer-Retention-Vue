@@ -70,4 +70,12 @@ export default {
   cursor: pointer;
   text-align: center;
 }
+
+.cancel-btn:hover {
+  background-image: -webkit-linear-gradient(top, #fff, #f0f0f0);
+  background-image: -moz-linear-gradient(top, #fff, #f0f0f0);
+  background-image: -ms-linear-gradient(top, #fff, #f0f0f0);
+  background-image: -o-linear-gradient(top, #fff, #f0f0f0);
+  background-image: linear-gradient(to bottom, #fff, #f0f0f0);
+}
 </style>

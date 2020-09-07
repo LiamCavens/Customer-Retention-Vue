@@ -126,11 +126,11 @@ export default {
 .btn-orange:hover {
   border: solid #d3671b 1px;
   background: #d3671b;
-  background-image: -webkit-linear-gradient(top, #f37d29, #ee7623);
-  background-image: -moz-linear-gradient(top, #f37d29, #ee7623);
-  background-image: -ms-linear-gradient(top, #f37d29, #ee7623);
-  background-image: -o-linear-gradient(top, #f37d29, #ee7623);
-  background-image: linear-gradient(to bottom, #f37d29, #ee7623);
+  background-image: -webkit-linear-gradient(top, #f37d29, #ce5a07);
+  background-image: -moz-linear-gradient(top, #f37d29, #ce5a07);
+  background-image: -ms-linear-gradient(top, #f37d29, #ce5a07);
+  background-image: -o-linear-gradient(top, #f37d29, #ce5a07);
+  background-image: linear-gradient(to bottom, #f37d29, #ce5a07);
 }
 
 .btn-orange:focus,

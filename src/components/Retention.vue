@@ -28,12 +28,12 @@ export default {
   width: 100%;
   display: flex;
   justify-content: center;
-  flex: 1;
+  /* flex: 1; */
 }
 
 .retention-components {
   margin: 10px;
-  padding: 10px 10px 0 10px;
+  padding: 25px 10px;
   width: 350px;
   background-color: white;
   color: #00263a;

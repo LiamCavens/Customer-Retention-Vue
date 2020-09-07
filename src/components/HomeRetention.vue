@@ -1,11 +1,12 @@
 <template>
   <div class="home-retention">
-    <h3>Subscription</h3>
+    <h3 class="home-retention-bold">Subscription</h3>
     <img class="home-retention-icon" src="../assets/icon_dog_white.png" alt="dogIcon" />
     <p class="home-retention-bold">{{status}}</p>
+    <p class="home-retention-text">Added {{joinDate}}</p>
     <img class="home-retention-icon" src="../assets/icon_calendar_white.png" alt="calendarIcon" />
     <p class="home-retention-bold">Next Delivery</p>
-    <p class="home-retention-next-delivery">{{nextDelivery}}</p>
+    <p class="home-retention-text">{{nextDelivery}}</p>
     <button class="btn-orange manage-btn">Manage Subscription</button>
     <button class="cancel-btn">Cancel Subscription</button>
   </div>
@@ -18,6 +19,7 @@ export default {
   data: () => {
     return {
       status: "Active",
+      joinDate: "13th March 2020",
       nextDelivery: "29th September 2020",
     };
   },
@@ -39,6 +41,16 @@ export default {
   width: 100px;
 }
 
+.home-retention-bold {
+  font-family: Montserrat-bold;
+  font-size: 24px;
+  margin: 20px 0 0 0;
+}
+
+.home-retention-text {
+  margin: 8px;
+}
+
 .manage-btn {
   width: 250px;
   box-shadow: none !important;
@@ -46,10 +58,16 @@ export default {
 }
 
 .cancel-btn {
+  font-family: Montserrat;
   width: 250px;
+  color: #00263a;
   border: solid #ee7623 1px;
   background-color: white;
   height: 30px;
   border-radius: 5px;
+  padding: 2px;
+  border: solid #d3671b 1px;
+  cursor: pointer;
+  text-align: center;
 }
 </style>

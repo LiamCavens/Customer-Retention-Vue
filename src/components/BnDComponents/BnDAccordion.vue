@@ -93,11 +93,34 @@ export default {
 }
 
 .header-text {
+    position: relative;
   display: flex;
   flex-direction: column;
   margin: auto 0;
   font-weight: 700;
   font-size: 14px;
+}
+
+.header-text:hover {
+  color: #00263a;
+}
+
+.header-text::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #00263a;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.header-text:hover::before {
+  visibility: visible;
+  transform: scaleX(1);
 }
 
 .header-image {

@@ -2,34 +2,36 @@
   <div class="retention">
     <div class="retention-components">
       <HomeRetention
-        v-if="retentionStage === 0 && manageType != 'example2'"
+        v-if="manageType === 'example1'"
         @manageSubmit="handleManage"
       />
       <HomeRetention2
-        v-if="retentionStage === 0 && manageType === 'example2'"
+        v-if="manageType === 'example2'"
         @manageSubmit="handleManage"
       />
       <ManageAccount
-        v-if="retentionStage === 2 && manageType === 'account'"
+        v-if="manageType === 'account'"
         @manageSubmit="handleManage"
       />
       <ManageDelivery
-        v-if="retentionStage === 2 && manageType === 'deliveries'"
+        v-if="manageType === 'deliveries'"
         @manageSubmit="handleManage"
       />
       <ManagePetsAndFood
-        v-if="retentionStage === 2 && manageType === 'petsAndFood'"
+        v-if="manageType === 'petsAndFood'"
         @manageSubmit="handleManage"
       />
       <ManageTreatsAndAddons
-        v-if="retentionStage === 2 && manageType === 'treatsAndAddons'"
+        v-if="manageType === 'treatsAndAddons'"
         @manageSubmit="handleManage"
       />
+      <UserCancel v-if="manageType === 'cancel'" @manageSubmit="handleManage" />
     </div>
   </div>
 </template>
 
 <script>
+import UserCancel from "./UserCancel";
 import HomeRetention from "./HomeRetention";
 import HomeRetention2 from "./HomeRetention2";
 import ManageAccount from "./ManageAccount";
@@ -40,6 +42,7 @@ import ManageTreatsAndAddons from "./ManageTreatsAndAddons";
 export default {
   name: "retentionv2",
   components: {
+    UserCancel,
     HomeRetention,
     HomeRetention2,
     ManageAccount,
@@ -50,14 +53,14 @@ export default {
   props: {},
   data: () => {
     return {
-      manageType: "",
-      retentionStage: 0,
+      manageType: "example2",
     };
   },
   methods: {
     handleManage(manageType) {
+      console.log("Liam: manageType");
+      console.log(manageType);
       this.manageType = manageType.manageType;
-      this.retentionStage = manageType.retentionStage;
     },
   },
 };

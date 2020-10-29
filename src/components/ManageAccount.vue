@@ -1,16 +1,16 @@
 <template>
   <div class="retention-component">
     <h2>Your account</h2>
-    <button class="btn-green account-btn">History</button>
-    <button class="btn-green account-btn">Login & password</button>
-    <button class="btn-green account-btn">Your addresses</button>
-    <button class="btn-green account-btn">Your profile</button>
-    <button class="btn-green cancel-btn">Cancel your account</button>
+    <button class="orange-btn account-btn">History</button>
+    <button class="orange-btn account-btn">Login & password</button>
+    <button class="orange-btn account-btn">Your addresses</button>
+    <button class="orange-btn account-btn">Your profile</button>
+    <button class="green-btn cancel-btn" @click="handleButton({manageType: 'cancel'})">Cancel your account</button>
     <a
       class="link"
       href="#"
       style="margin-top: 20px; font-size: 12px"
-      @click="handleButton({ manageType: 'example2', retentionStage: 0 })"
+      @click="handleButton({ manageType: 'example2'})"
       >Back</a
     >
   </div>

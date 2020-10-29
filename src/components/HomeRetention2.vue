@@ -7,18 +7,18 @@
       {{ nextDelivery | moment("dddd, Do MMMM YYYY") }}
     </p>
     <p class="home-retention-small">Payment Date : XXth December</p>
-    <!-- <button class="btn-green retention-btn">Manage account</button> -->
+    <!-- <button class="green-btn retention-btn">Manage account</button> -->
     <BnDAccordion v-for="(accordion, index) in manageAccordions" :key="index" class="retention-accordion" theme="bottomBorder">
       <div slot="header">{{accordion.manageHeader}}</div>
       <p class="accordion-text">
         {{accordion.manageText}}
       </p>
-      <button class="btn-green accordion-btn" @click="handleButton({manageType: accordion.manageType, retentionStage: accordion.retentionStage})">
+      <button class="green-btn accordion-btn" :class="{'orange-btn' : !accordion.active}" @click="handleButton({manageType: accordion.manageType})">
         {{accordion.manageButtonText}}
       </button>
     </BnDAccordion>
 
-    <a class="link" href="#" style="margin-top: 20px; font-size: 12px" @click="handleButton({manageType: '', retentionStage: 0})">See Example 1</a>
+    <a class="link" href="#" style="margin-top: 20px; font-size: 12px" @click="handleButton({manageType: 'example1'})">See Example 1</a>
   </div>
 </template>
 
@@ -42,7 +42,7 @@ export default {
         change your schedule of deliveries`,
           manageType: `deliveries`,
           manageButtonText: `Change Deliveries`,
-          retentionStage: 2
+          retentionStage: 1
         },
         {
           manageHeader: `Manage pets & food`,
@@ -50,7 +50,7 @@ export default {
         change pets and add or remove them from the food plan.`,
           manageType: `petsAndFood`,
           manageButtonText: `Change pets or food`,
-          retentionStage: 2
+          retentionStage: 1
         },
         {
           manageHeader: `Manage account`,
@@ -58,21 +58,22 @@ export default {
         of your account.`,
           manageType: `account`,
           manageButtonText: `Change account details`,
-          retentionStage: 2
+          retentionStage: 1,
+          active: true
         },
         {
           manageHeader: `Manage treats & addons`,
           manageText: `Add treats and add-ons to your deliveries or as an hoc order..`,
           manageType: `treatsAndAddon`,
           manageButtonText: `Change Treats and addons`,
-          retentionStage: 2
+          retentionStage: 1
         },
         {
           manageHeader: `Help`,
           manageText: `Let us help you with anything`,
           manageType: `help`,
           manageButtonText: `Talk to us`,
-          retentionStage: 2
+          retentionStage: 1
         },
       ],
     };

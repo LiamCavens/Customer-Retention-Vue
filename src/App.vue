@@ -62,7 +62,7 @@ export default {
   transform: scaleX(1);
 }
 
-.btn-green {
+.green-btn {
   font-family: 'Montserrat', sans-serif;
   background: #789904;
   -webkit-border-radius: 20px;
@@ -78,11 +78,29 @@ export default {
   margin: 10px;
 }
 
-.btn-green:focus {
+.orange-btn {
+  font-family: 'Montserrat', sans-serif;
+  background:#ee7623;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 500px;
+  color: #ffffff;
+  height: 50px;
+  padding: 2px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  border: solid #f17216 1px;
+  cursor: pointer;
+  text-align: center;
+  margin: 10px;
+}
+
+.green-btn:focus,
+.orange-btn:focus {
   outline: none;
 }
 
-.btn-green:active {
+.green-btn:active,
+.orange-btn:active {
   box-shadow: inset 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
 

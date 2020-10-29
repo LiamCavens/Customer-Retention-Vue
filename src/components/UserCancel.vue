@@ -14,7 +14,7 @@
     <div class="cancel-cards">
       <div
         class="cancel-card"
-        v-for="(cancelReasons, index) in cancelReasons"
+        v-for="(cancelReasons, index) in orderedCancelReasons"
         :key="index"
       >
         <img
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import _ from "lodash";
 export default {
   name: "UserCancel",
   components: {},
@@ -70,6 +71,11 @@ export default {
     };
   },
   methods: {},
+  computed: {
+    orderedCancelReasons: function () {
+      return _.orderBy(this.cancelReasons, "order");
+    },
+  },
 };
 </script>
 

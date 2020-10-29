@@ -1,6 +1,6 @@
 <template>
   <div class="retention-component">
-    <h2>Manage account</h2>
+    <h2>Your account</h2>
     <button class="btn-green account-btn">History</button>
     <button class="btn-green account-btn">Login & password</button>
     <button class="btn-green account-btn">Your addresses</button>

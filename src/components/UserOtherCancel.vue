@@ -18,8 +18,8 @@
         <div class="check"></div>
       </li>
     </ul>
-    <button class="bnd-btn green-btn button">Manage subscription</button>
-    <button class="bnd-btn white-btn button">Cancel subscription</button>
+    <button class="bnd-btn green-btn button" @click="handleButton({manageType: 'example2'})">Manage subscription</button>
+    <button class="bnd-btn white-btn button" @click="handleButton({manageType: 'finalCancel'})">Continue Cancellation</button>
   </div>
 </template>
 
@@ -53,7 +53,7 @@ export default {
   },
   methods: {
     handleButton(manageType) {
-      console.log(manageType);
+      this.$emit("manageSubmit", manageType);
     },
   },
 };

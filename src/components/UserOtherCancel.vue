@@ -18,15 +18,6 @@
         <div class="check"></div>
       </li>
     </ul>
-    <button class="bnd-btn green-btn" v-if="cancelReason === 'notLikeFood'">
-      Reason 1
-    </button>
-    <button class="bnd-btn green-btn" v-if="cancelReason === 'holiday'">
-      Reason 2
-    </button>
-    <button class="bnd-btn green-btn" v-if="cancelReason === 'anotherFood'">
-      Reason 3
-    </button>
     <button
       class="bnd-btn white-btn button"
       @click="handleButton({ manageType: 'finalCancel' })"
@@ -47,20 +38,20 @@ export default {
       cancelReason: "",
       cancelReasons: [
         {
-          text: `My dog does not like the food`,
-          cancelReason: `notLikeFood`,
+          text: `Reason 1`,
+          cancelReason: `r1`,
         },
         {
-          text: `I'm going away on holiday`,
-          cancelReason: `holiday`,
+          text: `Reason 2`,
+          cancelReason: `r2`,
         },
         {
-          text: `I've moved to another food`,
-          cancelReason: `anotherFood`,
+          text: `Reason 3`,
+          cancelReason: `r3`,
         },
         {
-          text: `My dog passed away`,
-          cancelReason: `passedAway`,
+          text: `Reason 4`,
+          cancelReason: `r4`,
         },
       ],
     };

@@ -24,7 +24,7 @@
       :key="index"
       class="cancel-accordion"
       theme="noBorder"
-      :fasIcon="['fas', 'circle']"
+      :fasIcon="['far', 'circle']"
     >
       <div slot="header">{{ cancel.text }}</div>
       <div class="subreasons">

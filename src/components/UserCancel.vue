@@ -25,6 +25,17 @@
         <p class="cancel-card-text">{{ cancelReasons.text }}</p>
       </div>
     </div>
+
+    <a
+      class="cancel-link"
+      href="#"
+      style="margin-top: 20px; font-size: 12px;"
+      @click="handleButton({ manageType: 'cancelOther'})"
+      >None of the above</a
+    >
+
+    <!-- Takes it to  -->
+
   </div>
 </template>
 
@@ -70,7 +81,11 @@ export default {
       ],
     };
   },
-  methods: {},
+  methods: {
+      handleButton(manageType){
+          this.$emit("manageSubmit", manageType);
+      }
+  },
   computed: {
     orderedCancelReasons: function () {
       return _.orderBy(this.cancelReasons, "order");
@@ -119,5 +134,14 @@ export default {
 
 .cancel-img {
   height: 100px;
+}
+
+.cancel-link {
+    color: #789904;
+    text-decoration: underline;
+}
+
+.cancel-link:hover {
+    color: #576e03;
 }
 </style>

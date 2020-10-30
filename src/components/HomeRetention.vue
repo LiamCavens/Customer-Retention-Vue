@@ -7,11 +7,11 @@
       {{ nextDelivery | moment("dddd, Do MMMM YYYY") }}
     </p>
     <p class="home-retention-small">Payment Date : XXth December</p>
-    <!-- <button class="green-btn retention-btn">Manage account</button> -->
-    <button class="orange-btn retention-btn">Manage deliveries</button>
-    <button class="orange-btn retention-btn">Manage pets & food</button>
-    <button class="orange-btn retention-btn">Manage account</button>
-    <button class="green-btn retention-btn" @click="handleButton({manageType: 'example2'})">
+    <!-- <button class="green-btn bnd-btn retention-btn">Manage account</button> -->
+    <button class="orange-btn bnd-btn retention-btn">Manage deliveries</button>
+    <button class="orange-btn bnd-btn retention-btn">Manage pets & food</button>
+    <button class="orange-btn bnd-btn retention-btn">Manage account</button>
+    <button class="green-btn bnd-btn retention-btn" @click="handleButton({manageType: 'example2'})">
       See Example 2.
     </button>
   </div>

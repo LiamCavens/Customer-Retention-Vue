@@ -13,7 +13,7 @@
       <p class="accordion-text">
         {{accordion.manageText}}
       </p>
-      <button class="green-btn accordion-btn" :class="{'orange-btn' : !accordion.active}" @click="handleButton({manageType: accordion.manageType})">
+      <button class="bnd-btn green-btn accordion-btn" :class="{'orange-btn' : !accordion.active}" @click="handleButton({manageType: accordion.manageType})">
         {{accordion.manageButtonText}}
       </button>
     </BnDAccordion>

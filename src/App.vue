@@ -18,7 +18,7 @@ export default {
 
 <style>
 #app {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -62,49 +62,47 @@ export default {
   transform: scaleX(1);
 }
 
-.green-btn {
-  font-family: 'Montserrat', sans-serif;
-  background: #789904;
+.bnd-btn {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   border-radius: 500px;
-  color: #ffffff;
-  height: 50px;
-  padding: 2px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-  border: solid #637e05 1px;
   cursor: pointer;
   text-align: center;
   margin: 10px;
+  height: 50px;
+  padding: 2px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.green-btn {
+  background: #789904;
+  color: #ffffff;
+  border: solid #637e05 1px;
 }
 
 .orange-btn {
-  font-family: 'Montserrat', sans-serif;
-  background:#ee7623;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 500px;
+  background: #ee7623;
   color: #ffffff;
-  height: 50px;
-  padding: 2px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
   border: solid #f17216 1px;
-  cursor: pointer;
-  text-align: center;
-  margin: 10px;
 }
 
-.green-btn:focus,
-.orange-btn:focus {
+.white-btn {
+  background-color: #fff;
+  color: #789904;
+  border: 1px solid #789904;
+}
+
+.bnd-btn:focus {
   outline: none;
 }
 
-.green-btn:active,
-.orange-btn:active {
+.bnd-btn:active {
   box-shadow: inset 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .accordion-btn {
-    width: 200px;
+  width: 200px;
 }
 </style>

@@ -26,12 +26,17 @@
         @manageSubmit="handleManage"
       />
       <UserCancel v-if="manageType === 'cancel'" @manageSubmit="handleManage" />
+      <UserOtherCancel
+        v-if="manageType === 'cancelOther'"
+        @manageSubmit="handleManage"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import UserCancel from "./UserCancel";
+import UserOtherCancel from "./UserOtherCancel";
 import HomeRetention from "./HomeRetention";
 import HomeRetention2 from "./HomeRetention2";
 import ManageAccount from "./ManageAccount";
@@ -43,6 +48,7 @@ export default {
   name: "retentionv2",
   components: {
     UserCancel,
+    UserOtherCancel,
     HomeRetention,
     HomeRetention2,
     ManageAccount,
@@ -53,7 +59,7 @@ export default {
   props: {},
   data: () => {
     return {
-      manageType: "example2",
+      manageType: "cancel",
     };
   },
   methods: {

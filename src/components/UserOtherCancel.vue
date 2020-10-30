@@ -32,8 +32,9 @@
           class="subreason"
           v-for="(subReason, index) in cancel.subReasons"
           :key="index"
+          @click="handleSubReason(subReason.subReason)"
         >
-          {{ subReason }}
+          {{ subReason.subReasonText }}
         </p>
       </div>
     </BnDAccordion>
@@ -59,34 +60,40 @@ export default {
   data: () => {
     return {
       cancelReason: "",
+      cancelSubReason: "",
       cancelReasons: [
         {
           text: `Reason 1`,
           cancelReason: `r1`,
-          subReasons: ["Sub-Reason 1", "Sub-Reason 2", "Sub-Reason 3"],
+          subReasons: [{subReasonText:"Sub-Reason 1", subReason: 'sr1'}, {subReasonText:"Sub-Reason 2", subReason: 'sr2'}, {subReasonText:"Sub-Reason 3", subReason: 'sr3'}],
         },
         {
           text: `Reason 2`,
           cancelReason: `r2`,
-          subReasons: ["Sub-Reason 1", "Sub-Reason 2", "Sub-Reason 3"],
+          subReasons: [{subReasonText:"Sub-Reason 4", subReason: 'sr4'}, {subReasonText:"Sub-Reason 5", subReason: 'sr5'}, {subReasonText:"Sub-Reason 6", subReason: 'sr6'}],
         },
         {
           text: `Reason 3`,
           cancelReason: `r3`,
-          subReasons: ["Sub-Reason 1", "Sub-Reason 2", "Sub-Reason 3"],
+          subReasons: [{subReasonText:"Sub-Reason 7", subReason: 'sr7'}, {subReasonText:"Sub-Reason 8", subReason: 'sr8'}, {subReasonText:"Sub-Reason 9", subReason: 'sr9'}],
         },
         {
           text: `Reason 4`,
           cancelReason: `r4`,
-          subReasons: ["Sub-Reason 1", "Sub-Reason 2", "Sub-Reason 3"],
+          subReasons: [{subReasonText:"Sub-Reason 10", subReason: 'sr10'}, {subReasonText:"Sub-Reason 11", subReason: 'sr11'}, {subReasonText:"Sub-Reason 12", subReason: 'sr12'}],
         },
       ],
     };
   },
   methods: {
     handleButton(manageType) {
+        manageType.subReason = this.cancelSubReason;
       this.$emit("manageSubmit", manageType);
     },
+    handleSubReason(subReason) {
+        this.cancelSubReason = subReason;
+        this.handleButton({manageType: 'userCancelInput'})
+    }
   },
 };
 </script>
@@ -156,12 +163,14 @@ button[disabled] {
 .subreason {
   cursor: pointer;
   margin: 10px;
+  width: 100%;
+  display: flex;
 }
 </style>
 
 <style>
 .cancel-accordion {
-  width: 250px;
+  width: 300px;
 }
 </style>
 

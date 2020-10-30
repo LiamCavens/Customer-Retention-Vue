@@ -1,7 +1,7 @@
 <template>
   <div class="retention-component">
     <h2 class="cancel-header">Let us know why you are cancelling</h2>
-    <ul class="cancel-list">
+    <!-- <ul class="cancel-list">
       <li
         class="cancel-radio"
         v-for="(reason, index) in cancelReasons"
@@ -17,7 +17,27 @@
         <label :for="reason.cancelReason">{{ reason.text }}</label>
         <div class="check"></div>
       </li>
-    </ul>
+    </ul> -->
+
+    <BnDAccordion
+      v-for="(cancel, index) in cancelReasons"
+      :key="index"
+      class="cancel-accordion"
+      theme="noBorder"
+      :fasIcon="['fas', 'circle']"
+    >
+      <div slot="header">{{ cancel.text }}</div>
+      <div class="subreasons">
+        <p
+          class="subreason"
+          v-for="(subReason, index) in cancel.subReasons"
+          :key="index"
+        >
+          {{ subReason }}
+        </p>
+      </div>
+    </BnDAccordion>
+
     <button
       class="bnd-btn white-btn button"
       @click="handleButton({ manageType: 'finalCancel' })"
@@ -29,9 +49,12 @@
 </template>
 
 <script>
+import BnDAccordion from "./BnDComponents/BnDAccordion";
 export default {
   name: "UserOtherCancel",
-  components: {},
+  components: {
+    BnDAccordion,
+  },
   props: {},
   data: () => {
     return {
@@ -40,18 +63,22 @@ export default {
         {
           text: `Reason 1`,
           cancelReason: `r1`,
+          subReasons: ["Sub-Reason 1", "Sub-Reason 2", "Sub-Reason 3"],
         },
         {
           text: `Reason 2`,
           cancelReason: `r2`,
+          subReasons: ["Sub-Reason 1", "Sub-Reason 2", "Sub-Reason 3"],
         },
         {
           text: `Reason 3`,
           cancelReason: `r3`,
+          subReasons: ["Sub-Reason 1", "Sub-Reason 2", "Sub-Reason 3"],
         },
         {
           text: `Reason 4`,
           cancelReason: `r4`,
+          subReasons: ["Sub-Reason 1", "Sub-Reason 2", "Sub-Reason 3"],
         },
       ],
     };
@@ -119,8 +146,24 @@ button:disabled,
 button[disabled] {
   opacity: 0.5;
 }
+
+.subreasons {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-left: 15px;
+}
+.subreason {
+  cursor: pointer;
+  margin: 10px;
+}
 </style>
 
+<style>
+.cancel-accordion {
+  width: 250px;
+}
+</style>
 
 <style scoped>
 .cancel-list {
@@ -183,10 +226,6 @@ input[type="radio"]:checked ~ .check {
 input[type="radio"]:checked ~ .check::before {
   background: #789904;
 }
-
-/* input[type="radio"]:checked ~ label {
-  color: #789904;
-} */
 
 .cancel-radio:hover .check {
   border: 3px solid #789904;

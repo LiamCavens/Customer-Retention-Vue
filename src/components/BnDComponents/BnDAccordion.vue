@@ -11,7 +11,7 @@
       <font-awesome-icon
         class="header-icon"
         :class="{ rotate: show }"
-        :icon="['fas', 'angle-down']"
+        :icon="defaultIcon"
       />
     </div>
     <transition
@@ -37,6 +37,7 @@ export default {
     theme: String,
     icon: String,
     showThis: Boolean,
+    fasIcon: Array
   },
   data: () => {
     return {
@@ -67,6 +68,12 @@ export default {
   },
   mounted() {
     this.show = this.showThis;
+  },
+  computed: {
+      defaultIcon() {
+          if (!this.fasIcon) return ['fas', 'angle-down'];
+          return this.fasIcon;
+      }
   },
 };
 </script>

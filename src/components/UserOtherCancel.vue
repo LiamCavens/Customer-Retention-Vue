@@ -18,8 +18,22 @@
         <div class="check"></div>
       </li>
     </ul>
-    <button class="bnd-btn green-btn button" @click="handleButton({manageType: 'example2'})">Manage subscription</button>
-    <button class="bnd-btn white-btn button" @click="handleButton({manageType: 'finalCancel'})">Continue Cancellation</button>
+    <button class="bnd-btn green-btn" v-if="cancelReason === 'notLikeFood'">
+      Reason 1
+    </button>
+    <button class="bnd-btn green-btn" v-if="cancelReason === 'holiday'">
+      Reason 2
+    </button>
+    <button class="bnd-btn green-btn" v-if="cancelReason === 'anotherFood'">
+      Reason 3
+    </button>
+    <button
+      class="bnd-btn white-btn button"
+      @click="handleButton({ manageType: 'finalCancel' })"
+      :disabled="!cancelReason"
+    >
+      Continue Cancellation
+    </button>
   </div>
 </template>
 
@@ -107,7 +121,12 @@ export default {
 }
 
 .bnd-btn {
-    width: 300px;
+  width: 300px;
+}
+
+button:disabled,
+button[disabled] {
+  opacity: 0.5;
 }
 </style>
 

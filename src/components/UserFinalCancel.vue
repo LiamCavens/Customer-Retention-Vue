@@ -12,17 +12,12 @@
           :calculate-position="withPopper"
         />
     <button
-      class="bnd-btn green-btn button"
-      @click="handleButton({ manageType: 'example2' })"
-    >
-      Manage subscription
-    </button>
-    <button
       class="bnd-btn white-btn button"
       @click="handleButton({ manageType: 'cancelled' })"
     >
       Cancel Subscription
     </button>
+    <a class="link" href="#" style="margin-top: 20px; font-size: 12px" @click="handleButton({manageType: 'example2'})">Back</a>
   </div>
 </template>
 

@@ -46,6 +46,8 @@
     >
       Continue Cancellation
     </button>
+
+    <a class="link" href="#" style="margin-top: 20px; font-size: 12px" @click="handleButton({manageType: 'example2'})">Back</a>
   </div>
 </template>
 

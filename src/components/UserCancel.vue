@@ -34,7 +34,7 @@
       >None of the above</a
     >
 
-    <!-- Takes it to  -->
+    <a class="link" href="#" style="margin-top: 20px; font-size: 12px" @click="handleButton({manageType: 'example2'})">Back</a>
 
   </div>
 </template>

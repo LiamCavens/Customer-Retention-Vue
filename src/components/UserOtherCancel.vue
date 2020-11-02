@@ -1,24 +1,6 @@
 <template>
   <div class="retention-component">
     <h2 class="cancel-header">Let us know why you are cancelling</h2>
-    <!-- <ul class="cancel-list">
-      <li
-        class="cancel-radio"
-        v-for="(reason, index) in cancelReasons"
-        :key="index"
-      >
-        <input
-          type="radio"
-          :id="reason.cancelReason"
-          :name="reason.cancelReason"
-          :value="reason.cancelReason"
-          v-model="cancelReason"
-        />
-        <label :for="reason.cancelReason">{{ reason.text }}</label>
-        <div class="check"></div>
-      </li>
-    </ul> -->
-
     <BnDAccordion
       v-for="(cancel, index) in cancelReasons"
       :key="index"
@@ -26,6 +8,8 @@
       theme="noBorder"
       :fasIcon="['far', 'circle']"
       :heightProp="accordionHeight"
+      @opened="currentAccordion = index"
+      :showThis="index === currentAccordion"
     >
       <div slot="header">{{ cancel.text }}</div>
       <div class="subreasons">
@@ -36,7 +20,14 @@
           @click="handleSubReason(subReason.subReason, index)"
         >
           {{ subReason.subReasonText }}
-          <span v-if="subReason.subReason === cancelSubReason"><i>x</i></span>
+          <span
+            class="checkedSub filled-circle"
+            v-if="subReason.subReason === cancelSubReason"
+          ></span>
+          <span
+            class="checkedSub hollow-circle"
+            v-if="subReason.subReason != cancelSubReason"
+          ></span>
         </p>
         <div
           v-for="(subReason, index) in cancel.subReasons"
@@ -47,7 +38,12 @@
             class="cancel-solution"
             v-if="subReason.subReason === cancelSubReason"
           >
-            {{ subReason.solution }}
+            <p class="solution-text">{{ subReason.solution }}</p>
+            <p class="solution-link-p">
+              <a class="solution-link" href="#">{{
+                subReason.solutionLinkText
+              }}</a>
+            </p>
           </div>
         </div>
       </div>
@@ -84,6 +80,7 @@ export default {
       cancelReason: "",
       cancelSubReason: "",
       accordionHeight: 0,
+      currentAccordion: -1,
       cancelReasons: [
         {
           text: `My pet is a fussy eater`,
@@ -93,39 +90,92 @@ export default {
               subReasonText: "He/She wouldn't eat the food",
               subReason: "notEatFood",
               solution: `Have you tried our Scavenger Method? Developed by Caroline, our in-house behaviourist, this method has a 95% success rate.`,
+              solutionLinkText: "Learn More",
             },
             {
               subReasonText: "He/she prefers dry food",
               subReason: "preferDry",
+              solution: `Have you tried our Scavenger Method? Developed by Caroline, our in-house behaviourist, this method has a 95% success rate.`,
+              solutionLinkText: "Learn More",
             },
-            { subReasonText: "Other", subReason: "otherFussy" },
+            {
+              subReasonText: "Other",
+              subReason: "otherFussy",
+              solution: `Maybe if you talk to one of our team we can help you with whatever your problem is.`,
+              solutionLinkText: "Call us",
+            },
           ],
         },
         {
           text: `Reason 2`,
           cancelReason: `r2`,
           subReasons: [
-            { subReasonText: "Sub-Reason 4", subReason: "sr4" },
-            { subReasonText: "Sub-Reason 5", subReason: "sr5" },
-            { subReasonText: "Sub-Reason 6", subReason: "sr6" },
+            {
+              subReasonText: "Sub-Reason 4",
+              subReason: "sr4",
+              solution: `Something is going to go in here that is actually useful to the customer, if this does not help you, please contact Sholto as its his problem now`,
+              solutionLinkText: "Learn More",
+            },
+            {
+              subReasonText: "Sub-Reason 5",
+              subReason: "sr5",
+              solution: `Something is going to go in here that is actually useful to the customer, if this does not help you, please contact Sholto as its his problem now`,
+              solutionLinkText: "Learn More",
+            },
+            {
+              subReasonText: "Sub-Reason 6",
+              subReason: "sr6",
+              solution: `Something is going to go in here that is actually useful to the customer, if this does not help you, please contact Sholto as its his problem now`,
+              solutionLinkText: "Learn More",
+            },
           ],
         },
         {
           text: `Reason 3`,
           cancelReason: `r3`,
           subReasons: [
-            { subReasonText: "Sub-Reason 7", subReason: "sr7" },
-            { subReasonText: "Sub-Reason 8", subReason: "sr8" },
-            { subReasonText: "Sub-Reason 9", subReason: "sr9" },
+            {
+              subReasonText: "Sub-Reason 7",
+              subReason: "sr7",
+              solution: `Something is going to go in here that is actually useful to the customer, if this does not help you, please contact Sholto as its his problem now`,
+              solutionLinkText: "Learn More",
+            },
+            {
+              subReasonText: "Sub-Reason 8",
+              subReason: "sr8",
+              solution: `Something is going to go in here that is actually useful to the customer, if this does not help you, please contact Sholto as its his problem now`,
+              solutionLinkText: "Learn More",
+            },
+            {
+              subReasonText: "Sub-Reason 9",
+              subReason: "sr9",
+              solution: `Something is going to go in here that is actually useful to the customer, if this does not help you, please contact Sholto as its his problem now`,
+              solutionLinkText: "Learn More",
+            },
           ],
         },
         {
           text: `Reason 4`,
           cancelReason: `r4`,
           subReasons: [
-            { subReasonText: "Sub-Reason 10", subReason: "sr10" },
-            { subReasonText: "Sub-Reason 11", subReason: "sr11" },
-            { subReasonText: "Sub-Reason 12", subReason: "sr12" },
+            {
+              subReasonText: "Sub-Reason 10",
+              subReason: "sr10",
+              solution: `Something is going to go in here that is actually useful to the customer, if this does not help you, please contact Sholto as its his problem now`,
+              solutionLinkText: "Learn More",
+            },
+            {
+              subReasonText: "Sub-Reason 11",
+              subReason: "sr11",
+              solution: `Something is going to go in here that is actually useful to the customer, if this does not help you, please contact Sholto as its his problem now`,
+              solutionLinkText: "Learn More",
+            },
+            {
+              subReasonText: "Sub-Reason 12",
+              subReason: "sr12",
+              solution: `Something is going to go in here that is actually useful to the customer, if this does not help you, please contact Sholto as its his problem now`,
+              solutionLinkText: "Learn More",
+            },
           ],
         },
       ],
@@ -218,6 +268,12 @@ button[disabled] {
   display: flex;
   font-size: 14px;
   margin: 8px 0px;
+  position: relative;
+}
+
+.checkedSub {
+  position: absolute;
+  right: 20px;
 }
 
 .cancel-solution {
@@ -225,18 +281,43 @@ button[disabled] {
   width: 100%;
 }
 
+.solution-text {
+  color: #fff;
+  font-size: 12px;
+  text-align: left;
+  padding: 5px;
+}
+.solution-link-p {
+  text-align: left;
+  padding: 0 0 5px 5px;
+  font-size: 14px;
+}
+
 .solution-link {
   color: #fff;
 }
-</style>
 
-<style>
+.filled-circle {
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+  background-color: #789904;
+  box-shadow: inset 0px 0px 0px 2px #fff;
+  border: 2px solid #00263a;
+}
+
+.hollow-circle {
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+  background-color: #fff;
+  border: 2px solid #00263a;
+}
+
 .cancel-accordion {
   width: 300px;
 }
-</style>
 
-<style scoped>
 .cancel-list {
   list-style-type: none;
   padding: 0;

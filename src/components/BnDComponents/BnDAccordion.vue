@@ -39,6 +39,7 @@ export default {
     showThis: Boolean,
     fasIcon: Array,
     heightProp: Number,
+    accodionIndex: Number,
   },
   data: () => {
     return {
@@ -58,7 +59,6 @@ export default {
       el.style.height = "0";
     },
     enter: function (el) {
-        console.log(el)
       el.style.height = el.scrollHeight + "px";
     },
     beforeLeave: function (el) {
@@ -80,10 +80,12 @@ export default {
   watch: {
       heightProp: function(){
           let el = this.$refs.accordionDynamic;
-          console.log('Liam: el in BnDaccordion');
-          console.log(el);
           this.enter(el)
+      },
+      showThis: function(){
+          this.show = this.showThis;
       }
+      
   },
 };
 </script>

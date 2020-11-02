@@ -84,14 +84,12 @@ export default {
   props: {},
   data: () => {
     return {
-      manageType: "cancelOther",
+      manageType: "example2",
       cancelReason: "",
     };
   },
   methods: {
     handleManage(manageType) {
-      console.log("Liam: manageType");
-      console.log(manageType);
       this.manageType = manageType.manageType;
     },
   },

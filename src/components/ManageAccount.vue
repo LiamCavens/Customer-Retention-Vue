@@ -1,10 +1,10 @@
 <template>
   <div class="retention-component">
     <h2>Your account</h2>
-    <button class="bnd-btn orange-btn account-btn">History</button>
-    <button class="bnd-btn orange-btn account-btn">Login & password</button>
-    <button class="bnd-btn orange-btn account-btn">Your addresses</button>
-    <button class="bnd-btn orange-btn account-btn">Your profile</button>
+    <button class="bnd-btn account-btn" disabled>History</button>
+    <button class="bnd-btn account-btn" disabled>Login & password</button>
+    <button class="bnd-btn account-btn" disabled>Your addresses</button>
+    <button class="bnd-btn account-btn" disabled>Your profile</button>
     <button class="bnd-btn green-btn cancel-btn" @click="handleButton({manageType: 'cancel'})">Cancel your account</button>
     <a
       class="link"

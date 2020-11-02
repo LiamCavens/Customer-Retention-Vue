@@ -13,7 +13,7 @@
       <p class="accordion-text">
         {{accordion.manageText}}
       </p>
-      <button class="bnd-btn green-btn accordion-btn" :class="{'orange-btn' : !accordion.active}" @click="handleButton({manageType: accordion.manageType})">
+      <button class="bnd-btn accordion-btn" :class="{'green-btn ' : accordion.active}" @click="handleButton({manageType: accordion.manageType})"  :disabled="!accordion.active">
         {{accordion.manageButtonText}}
       </button>
     </BnDAccordion>
@@ -42,7 +42,8 @@ export default {
         change your schedule of deliveries`,
           manageType: `deliveries`,
           manageButtonText: `Change Deliveries`,
-          retentionStage: 1
+          retentionStage: 1,
+          active: false
         },
         {
           manageHeader: `Manage pets & food`,

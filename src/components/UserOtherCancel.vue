@@ -25,6 +25,7 @@
       class="cancel-accordion"
       theme="noBorder"
       :fasIcon="['far', 'circle']"
+      :heightProp="accordionHeight"
     >
       <div slot="header">{{ cancel.text }}</div>
       <div class="subreasons">
@@ -32,10 +33,23 @@
           class="subreason"
           v-for="(subReason, index) in cancel.subReasons"
           :key="index"
-          @click="handleSubReason(subReason.subReason)"
+          @click="handleSubReason(subReason.subReason, index)"
         >
           {{ subReason.subReasonText }}
+          <span v-if="subReason.subReason === cancelSubReason"><i>x</i></span>
         </p>
+        <div
+          v-for="(subReason, index) in cancel.subReasons"
+          :key="`${index}-subreason`"
+          ref="subReasonRef"
+        >
+          <div
+            class="cancel-solution"
+            v-if="subReason.subReason === cancelSubReason"
+          >
+            {{ subReason.solution }}
+          </div>
+        </div>
       </div>
     </BnDAccordion>
 
@@ -47,7 +61,13 @@
       Continue Cancellation
     </button>
 
-    <a class="link" href="#" style="margin-top: 20px; font-size: 12px" @click="handleButton({manageType: 'example2'})">Back</a>
+    <a
+      class="link"
+      href="#"
+      style="margin-top: 20px; font-size: 12px"
+      @click="handleButton({ manageType: 'example2' })"
+      >Back</a
+    >
   </div>
 </template>
 
@@ -63,39 +83,68 @@ export default {
     return {
       cancelReason: "",
       cancelSubReason: "",
+      accordionHeight: 0,
       cancelReasons: [
         {
-          text: `Reason 1`,
-          cancelReason: `r1`,
-          subReasons: [{subReasonText:"Sub-Reason 1", subReason: 'sr1'}, {subReasonText:"Sub-Reason 2", subReason: 'sr2'}, {subReasonText:"Sub-Reason 3", subReason: 'sr3'}],
+          text: `My pet is a fussy eater`,
+          cancelReason: `fussy`,
+          subReasons: [
+            {
+              subReasonText: "He/She wouldn't eat the food",
+              subReason: "notEatFood",
+              solution: `Have you tried our Scavenger Method? Developed by Caroline, our in-house behaviourist, this method has a 95% success rate.`,
+            },
+            {
+              subReasonText: "He/she prefers dry food",
+              subReason: "preferDry",
+            },
+            { subReasonText: "Other", subReason: "otherFussy" },
+          ],
         },
         {
           text: `Reason 2`,
           cancelReason: `r2`,
-          subReasons: [{subReasonText:"Sub-Reason 4", subReason: 'sr4'}, {subReasonText:"Sub-Reason 5", subReason: 'sr5'}, {subReasonText:"Sub-Reason 6", subReason: 'sr6'}],
+          subReasons: [
+            { subReasonText: "Sub-Reason 4", subReason: "sr4" },
+            { subReasonText: "Sub-Reason 5", subReason: "sr5" },
+            { subReasonText: "Sub-Reason 6", subReason: "sr6" },
+          ],
         },
         {
           text: `Reason 3`,
           cancelReason: `r3`,
-          subReasons: [{subReasonText:"Sub-Reason 7", subReason: 'sr7'}, {subReasonText:"Sub-Reason 8", subReason: 'sr8'}, {subReasonText:"Sub-Reason 9", subReason: 'sr9'}],
+          subReasons: [
+            { subReasonText: "Sub-Reason 7", subReason: "sr7" },
+            { subReasonText: "Sub-Reason 8", subReason: "sr8" },
+            { subReasonText: "Sub-Reason 9", subReason: "sr9" },
+          ],
         },
         {
           text: `Reason 4`,
           cancelReason: `r4`,
-          subReasons: [{subReasonText:"Sub-Reason 10", subReason: 'sr10'}, {subReasonText:"Sub-Reason 11", subReason: 'sr11'}, {subReasonText:"Sub-Reason 12", subReason: 'sr12'}],
+          subReasons: [
+            { subReasonText: "Sub-Reason 10", subReason: "sr10" },
+            { subReasonText: "Sub-Reason 11", subReason: "sr11" },
+            { subReasonText: "Sub-Reason 12", subReason: "sr12" },
+          ],
         },
       ],
     };
   },
   methods: {
     handleButton(manageType) {
-        manageType.subReason = this.cancelSubReason;
+      manageType.subReason = this.cancelSubReason;
       this.$emit("manageSubmit", manageType);
     },
-    handleSubReason(subReason) {
-        this.cancelSubReason = subReason;
-        this.handleButton({manageType: 'userCancelInput'})
-    }
+    handleSubReason(subReason, subIndex) {
+      this.cancelSubReason = subReason;
+      let el = this.$refs.subReasonRef[subIndex];
+
+      //   this.handleButton({ manageType: "userCancelInput" });
+      setTimeout(() => {
+        this.accordionHeight = el.offsetHeight;
+      }, 0);
+    },
   },
 };
 </script>
@@ -157,16 +206,27 @@ button[disabled] {
 }
 
 .subreasons {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-left: 15px;
 }
 .subreason {
   cursor: pointer;
   margin: 10px;
   width: 100%;
   display: flex;
+  font-size: 14px;
+  margin: 8px 0px;
+}
+
+.cancel-solution {
+  background-color: #789904;
+  width: 100%;
+}
+
+.solution-link {
+  color: #fff;
 }
 </style>
 

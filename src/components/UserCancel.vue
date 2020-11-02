@@ -113,10 +113,12 @@ export default {
   height: 135px;
   margin: 10px;
   cursor: pointer;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
 }
 
 .cancel-card-text {
   position: absolute;
+  font-weight: 600;
   width: 110px;
   font-size: 12px;
   left: 0;

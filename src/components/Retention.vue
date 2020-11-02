@@ -84,7 +84,7 @@ export default {
   props: {},
   data: () => {
     return {
-      manageType: "example2",
+      manageType: "cancelOther",
       cancelReason: "",
     };
   },

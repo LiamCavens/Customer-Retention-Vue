@@ -21,7 +21,7 @@
       v-on:before-leave="beforeLeave"
       v-on:leave="leave"
     >
-      <div class="body" v-show="show">
+      <div class="body" v-show="show" ref="accordionDynamic">
         <div class="body-inner">
           <slot></slot>
         </div>
@@ -37,7 +37,8 @@ export default {
     theme: String,
     icon: String,
     showThis: Boolean,
-    fasIcon: Array
+    fasIcon: Array,
+    heightProp: Number,
   },
   data: () => {
     return {
@@ -57,6 +58,7 @@ export default {
       el.style.height = "0";
     },
     enter: function (el) {
+        console.log(el)
       el.style.height = el.scrollHeight + "px";
     },
     beforeLeave: function (el) {
@@ -73,6 +75,14 @@ export default {
       defaultIcon() {
           if (!this.fasIcon) return ['fas', 'angle-down'];
           return this.fasIcon;
+      }
+  },
+  watch: {
+      heightProp: function(){
+          let el = this.$refs.accordionDynamic;
+          console.log('Liam: el in BnDaccordion');
+          console.log(el);
+          this.enter(el)
       }
   },
 };

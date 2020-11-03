@@ -189,7 +189,7 @@ export default {
     handleSubReason(subReason, subIndex) {
       this.cancelSubReason = subReason;
       let el = this.$refs.subReasonRef[subIndex];
-
+        this.$emit('subReasonSubmit', subReason)
       //   this.handleButton({ manageType: "userCancelInput" });
       setTimeout(() => {
         this.accordionHeight = el.offsetHeight;

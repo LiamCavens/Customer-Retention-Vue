@@ -11,14 +11,16 @@
     <button class="bnd-btn retention-btn" disabled>Manage deliveries</button>
     <button class="bnd-btn retention-btn" disabled>Manage pets & food</button>
     <button class="bnd-btn retention-btn" disabled>Manage account</button>
-    <button class="green-btn bnd-btn retention-btn" @click="handleButton({manageType: 'example2'})">
+    <button
+      class="green-btn bnd-btn retention-btn"
+      @click="handleButton({ manageType: 'example2' })"
+    >
       See Example 2.
     </button>
   </div>
 </template>
 
 <script>
-
 export default {
   name: "HomeRetention",
   props: {},

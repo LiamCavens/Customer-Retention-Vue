@@ -29,13 +29,18 @@
     <a
       class="cancel-link"
       href="#"
-      style="margin-top: 20px; font-size: 12px;"
-      @click="handleButton({ manageType: 'cancelOther'})"
+      style="margin-top: 20px; font-size: 12px"
+      @click="handleButton({ manageType: 'cancelOther' })"
       >None of the above</a
     >
 
-    <a class="link" href="#" style="margin-top: 20px; font-size: 12px" @click="handleButton({manageType: 'example2'})">Back</a>
-
+    <a
+      class="link"
+      href="#"
+      style="margin-top: 20px; font-size: 12px"
+      @click="handleButton({ manageType: 'example2' })"
+      >Back</a
+    >
   </div>
 </template>
 
@@ -82,9 +87,9 @@ export default {
     };
   },
   methods: {
-      handleButton(manageType){
-          this.$emit("manageSubmit", manageType);
-      }
+    handleButton(manageType) {
+      this.$emit("manageSubmit", manageType);
+    },
   },
   computed: {
     orderedCancelReasons: function () {
@@ -116,6 +121,10 @@ export default {
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
 }
 
+.cancel-card:active {
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
 .cancel-card-text {
   position: absolute;
   font-weight: 600;
@@ -139,11 +148,11 @@ export default {
 }
 
 .cancel-link {
-    color: #789904;
-    text-decoration: underline;
+  color: #789904;
+  text-decoration: underline;
 }
 
 .cancel-link:hover {
-    color: #576e03;
+  color: #576e03;
 }
 </style>

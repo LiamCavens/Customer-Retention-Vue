@@ -34,21 +34,23 @@
         v-if="manageType === 'cancelOther'"
         :cancelReason="cancelReason"
         @manageSubmit="handleManage"
+        @subReasonSubmit="handleSubReason"
       />
       <UserFinalCancel
         v-if="manageType === 'finalCancel'"
         :cancelReason="cancelReason"
         @manageSubmit="handleManage"
       />
-
       <Cancelled
         v-if="manageType === 'cancelled'"
         :cancelReason="cancelReason"
         @manageSubmit="handleManage"
       />
-      <UserCancelInput v-if="manageType === 'userCancelInput'"
+      <UserCancelInput
+        v-if="manageType === 'userCancelInput'"
         :cancelReason="cancelReason"
-        @manageSubmit="handleManage" />
+        @manageSubmit="handleManage"
+      />
     </div>
   </div>
 </template>
@@ -86,11 +88,15 @@ export default {
     return {
       manageType: "example2",
       cancelReason: "",
+      cancelSubReason: "",
     };
   },
   methods: {
     handleManage(manageType) {
       this.manageType = manageType.manageType;
+    },
+    handleSubReason(subReason) {
+      this.cancelSubReason = subReason;
     },
   },
 };

@@ -1,7 +1,15 @@
 <template>
   <div class="retention-component">
     <h2 class="cancel-header">We'd love to know why</h2>
-    <textarea class="cancel-box" name="cancelReason" id="cancelReason" v-model="userInputReason" cols="36" rows="10" placeholder="Type in the box why you are leaving Bella & Duke"></textarea>
+    <textarea
+      class="cancel-box"
+      name="cancelReason"
+      id="cancelReason"
+      v-model="userInputReason"
+      cols="36"
+      rows="10"
+      placeholder="Type in the box why you are leaving Bella & Duke"
+    ></textarea>
     <button
       class="bnd-btn white-btn button"
       @click="handleButton({ manageType: 'finalCancel' })"
@@ -9,7 +17,13 @@
     >
       Continue Cancellation
     </button>
-    <a class="link" href="#" style="margin-top: 20px; font-size: 12px" @click="handleButton({manageType: 'example2'})">Back</a>
+    <a
+      class="link"
+      href="#"
+      style="margin-top: 20px; font-size: 12px"
+      @click="handleButton({ manageType: 'example2' })"
+      >Back</a
+    >
   </div>
 </template>
 
@@ -20,7 +34,7 @@ export default {
   props: {},
   data: () => {
     return {
-        userInputReason: ''
+      userInputReason: "",
     };
   },
   methods: {
@@ -80,7 +94,7 @@ export default {
 }
 
 .cancel-box {
-    font-family: Montserrat;
+  font-family: Montserrat;
 }
 
 .bnd-btn {

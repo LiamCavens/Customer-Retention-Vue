@@ -72,20 +72,19 @@ export default {
     this.show = this.showThis;
   },
   computed: {
-      defaultIcon() {
-          if (!this.fasIcon) return ['fas', 'angle-down'];
-          return this.fasIcon;
-      }
+    defaultIcon() {
+      if (!this.fasIcon) return ["fas", "angle-down"];
+      return this.fasIcon;
+    },
   },
   watch: {
-      heightProp: function(){
-          let el = this.$refs.accordionDynamic;
-          this.enter(el)
-      },
-      showThis: function(){
-          this.show = this.showThis;
-      }
-      
+    heightProp: function () {
+      let el = this.$refs.accordionDynamic;
+      this.enter(el);
+    },
+    showThis: function () {
+      this.show = this.showThis;
+    },
   },
 };
 </script>
@@ -112,7 +111,7 @@ export default {
 }
 
 .header-text {
-    position: relative;
+  position: relative;
   display: flex;
   flex-direction: column;
   margin: auto 0;
@@ -203,6 +202,6 @@ export default {
 }
 
 .accordion.bottomBorder .header-image {
-    display: none;
+  display: none;
 }
 </style>

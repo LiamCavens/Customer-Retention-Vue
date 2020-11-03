@@ -51,8 +51,8 @@
 
     <button
       class="bnd-btn white-btn button"
-      @click="handleButton({ manageType: 'finalCancel' })"
-      :disabled="!cancelReason"
+      @click="handleButton({ manageType: 'userCancelInput' })"
+      :disabled="!cancelSubReason"
     >
       Continue Cancellation
     </button>
@@ -187,10 +187,10 @@ export default {
       this.$emit("manageSubmit", manageType);
     },
     handleSubReason(subReason, subIndex) {
-      this.cancelSubReason = subReason;
+        this.cancelSubReason = subReason;
       let el = this.$refs.subReasonRef[subIndex];
         this.$emit('subReasonSubmit', subReason)
-      //   this.handleButton({ manageType: "userCancelInput" });
+        // this.handleButton({ manageType: "userCancelInput" });
       setTimeout(() => {
         this.accordionHeight = el.offsetHeight;
       }, 0);

@@ -36,6 +36,11 @@
         @manageSubmit="handleManage"
         @subReasonSubmit="handleSubReason"
       />
+      <UserCancelInput
+        v-if="manageType === 'userCancelInput'"
+        :cancelReason="cancelReason"
+        @manageSubmit="handleManage"
+      />
       <UserFinalCancel
         v-if="manageType === 'finalCancel'"
         :cancelReason="cancelReason"
@@ -43,11 +48,6 @@
       />
       <Cancelled
         v-if="manageType === 'cancelled'"
-        :cancelReason="cancelReason"
-        @manageSubmit="handleManage"
-      />
-      <UserCancelInput
-        v-if="manageType === 'userCancelInput'"
         :cancelReason="cancelReason"
         @manageSubmit="handleManage"
       />

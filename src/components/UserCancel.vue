@@ -16,6 +16,7 @@
         class="cancel-card"
         v-for="(cancelReasons, index) in orderedCancelReasons"
         :key="index"
+        @click="handleButton({manageType: 'userCancelInput'})"
       >
         <img
           class="cancel-img"

@@ -15,7 +15,7 @@
       @click="handleButton({ manageType: 'finalCancel' })"
       :disabled="!userInputReason"
     >
-      Continue Cancellation
+     {{userInputReason ? 'Submit &' : ''}} Continue Cancellation
     </button>
     <a
       class="link"

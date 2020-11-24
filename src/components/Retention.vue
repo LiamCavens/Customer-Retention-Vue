@@ -25,13 +25,13 @@
         v-if="manageType === 'treatsAndAddons'"
         @manageSubmit="handleManage"
       />
-      <UserCancel
-        v-if="manageType === 'cancel'"
+      <UserCancel2
+        v-if="manageType === 'cancel2'"
         :cancelReason="cancelReason"
         @manageSubmit="handleManage"
       />
-      <UserOtherCancel
-        v-if="manageType === 'cancelOther'"
+      <UserCancel
+        v-if="manageType === 'cancel'"
         :cancelReason="cancelReason"
         @manageSubmit="handleManage"
         @subReasonSubmit="handleSubReason"
@@ -57,9 +57,9 @@
 
 <script>
 import Cancelled from "./Cancelled";
-import UserCancel from "./UserCancel";
+import UserCancel2 from "./UserCancel2";
 import UserCancelInput from "./UserCancelInput";
-import UserOtherCancel from "./UserOtherCancel";
+import UserCancel from "./UserCancel";
 import UserFinalCancel from "./UserFinalCancel";
 import HomeRetention from "./HomeRetention";
 import HomeRetention2 from "./HomeRetention2";
@@ -72,9 +72,9 @@ export default {
   name: "retentionv2",
   components: {
     Cancelled,
-    UserCancel,
+    UserCancel2,
     UserCancelInput,
-    UserOtherCancel,
+    UserCancel,
     UserFinalCancel,
     HomeRetention,
     HomeRetention2,

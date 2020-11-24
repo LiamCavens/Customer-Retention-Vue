@@ -132,36 +132,4 @@ export default {
   box-shadow: 0 0px 0px rgba(0, 0, 0, 0.3), 0 5px 11px rgba(0, 0, 0, 0.22);
   padding: 0 0 20px 0;
 }
-
-.slide-fade-enter-active {
-  transition: all 0.8s ease;
-  transition-delay: 0.4s;
-}
-.slide-fade-leave-active {
-  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
-}
-.slide-fade-enter {
-  transform: translateY(100px);
-  opacity: 0;
-}
-
-.slide-fade-leave-to {
-  transform: translateY(-50px);
-  opacity: 0;
-}
-
-.help-transition-leave-active,
-.help-transition-enter-active {
-  transition: opacity 0.5s ease;
-}
-
-.help-transition-enter,
-.help-transition-leave-to {
-  opacity: 0;
-}
-
-.help-transition-enter-to,
-.help-transition-leave {
-  opacity: 1;
-}
 </style>

@@ -6,7 +6,7 @@
     <p class="home-retention-text">
       {{ nextDelivery | moment("dddd, Do MMMM YYYY") }}
     </p>
-    <p class="home-retention-small">Payment Date : XXth December</p>
+    <p class="home-retention-small">Next Payment Date : XXth December</p>
     <!-- <button class="green-btn bnd-btn retention-btn">Manage account</button> -->
     <button class="bnd-btn retention-btn" disabled>Manage deliveries</button>
     <button class="bnd-btn retention-btn" disabled>Manage pets & food</button>

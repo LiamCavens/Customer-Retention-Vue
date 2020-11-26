@@ -80,6 +80,9 @@ export default {
   watch: {
     heightProp: function () {
       let el = this.$refs.accordionDynamic;
+      if (this.heightProp === 0) {
+        return (el.style.height = 100 + "px");
+      }
       this.enter(el);
     },
     showThis: function () {

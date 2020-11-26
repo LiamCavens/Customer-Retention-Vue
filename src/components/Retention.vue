@@ -51,6 +51,9 @@
         :cancelReason="cancelReason"
         @manageSubmit="handleManage"
       />
+
+      <!-- RESOLVE COMPONENTS -->
+      <ResolveCall v-if="manageType === 'callResolve'" />
     </div>
   </div>
 </template>
@@ -68,6 +71,10 @@ import ManageDelivery from "./ManageDelivery";
 import ManagePetsAndFood from "./ManagePetsAndFood";
 import ManageTreatsAndAddons from "./ManageTreatsAndAddons";
 
+// RESOLVE COMPONENETS
+
+import ResolveCall from "./ResolveCall";
+
 export default {
   name: "retentionv2",
   components: {
@@ -75,6 +82,7 @@ export default {
     UserCancel2,
     UserCancelInput,
     UserCancel,
+    ResolveCall,
     UserFinalCancel,
     HomeRetention,
     HomeRetention2,
@@ -86,7 +94,7 @@ export default {
   props: {},
   data: () => {
     return {
-      manageType: "example2",
+      manageType: "cancel",
       cancelReason: "",
       cancelSubReason: "",
     };

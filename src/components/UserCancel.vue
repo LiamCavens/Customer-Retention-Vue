@@ -1,12 +1,11 @@
 <template>
   <div class="retention-component">
-    <h2 class="cancel-header">Let us know why you are cancelling</h2>
+    <h2 class="cancel-header">Help us understand why you are cancelling</h2>
     <!-- :fasIcon="['far', 'circle']" -->
     <BnDAccordion
       v-for="(cancel, index) in cancelReasons"
       :key="index"
       class="cancel-accordion"
-      theme="noBorder"
       :heightProp="accordionHeight"
       @opened="currentAccordion = index"
       :showThis="index === currentAccordion"
@@ -29,23 +28,10 @@
             v-if="subReason.subReason != cancelSubReason"
           ></span>
         </p>
-        <div
-          v-for="(subReason, index) in cancel.subReasons"
-          :key="`${index}-subreason`"
-          ref="subReasonRef"
-        >
-          <div
-            class="cancel-solution"
-            v-if="subReason.subReason === cancelSubReason"
-          >
-            <p class="solution-text">{{ subReason.solution }}</p>
-            <p class="solution-link-p">
-              <a class="solution-link" href="#">{{
-                subReason.solutionLinkText
-              }}</a>
-            </p>
-          </div>
-        </div>
+      </div>
+
+      <div ref="subReasonRef">
+        <CounterCancel v-if="cancelSubReason" :reason="cancelSubReason" @manageSubmit="handleButton" />
       </div>
     </BnDAccordion>
 
@@ -69,10 +55,12 @@
 
 <script>
 import BnDAccordion from "./BnDComponents/BnDAccordion";
+import CounterCancel from "./CounterCancel";
 export default {
-  name: "UserOtherCancel",
+  name: "UserCancel",
   components: {
     BnDAccordion,
+    CounterCancel,
   },
   props: {},
   data: () => {
@@ -107,7 +95,7 @@ export default {
           ],
         },
         {
-          text: `Don't need food`,
+          text: `I don't need the food`,
           cancelReason: `r2`,
           subReasons: [
             {
@@ -199,7 +187,7 @@ export default {
               subReason: "sr14",
               solution: `Losing a member of the family is never easy, but we are here to help in any way we can`,
               solutionLinkText: "",
-            }
+            },
           ],
         },
       ],
@@ -210,12 +198,15 @@ export default {
       manageType.subReason = this.cancelSubReason;
       this.$emit("manageSubmit", manageType);
     },
-    handleSubReason(subReason, subIndex) {
-        this.cancelSubReason = subReason;
-      let el = this.$refs.subReasonRef[subIndex];
-        this.$emit('subReasonSubmit', subReason)
-        // this.handleButton({ manageType: "userCancelInput" });
+    handleSubReason(subReason, index) {
+      this.cancelSubReason = subReason;
+      this.$emit("subReasonSubmit", subReason);
+      this.resetAccordionHeight(index);
+    },
+    resetAccordionHeight(accordionIndex) {
+      let el = this.$refs.subReasonRef[accordionIndex];
       setTimeout(() => {
+        console.log(el.offsetHeight);
         this.accordionHeight = el.offsetHeight;
       }, 0);
     },
@@ -225,7 +216,7 @@ export default {
 
 <style scoped>
 .cancel-header {
-  margin-bottom: 5px;
+  margin-bottom: 25px;
 }
 
 .cancel-cards {
@@ -290,8 +281,8 @@ button[disabled] {
   margin: 10px;
   width: 100%;
   display: flex;
-  font-size: 14px;
-  margin: 8px 0px;
+  font-size: 12px;
+  margin: 4px 0px;
   position: relative;
 }
 

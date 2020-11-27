@@ -36,8 +36,8 @@
         @manageSubmit="handleManage"
         @subReasonSubmit="handleSubReason"
       />
-      <UserCancelInput
-        v-if="manageType === 'userCancelInput'"
+      <SecondChance
+        v-if="manageType === 'secondChance'"
         :cancelReason="cancelReason"
         @manageSubmit="handleManage"
       />
@@ -61,7 +61,7 @@
 <script>
 import Cancelled from "./Cancelled";
 import UserCancel2 from "./UserCancel2";
-import UserCancelInput from "./UserCancelInput";
+import SecondChance from "./SecondChance";
 import UserCancel from "./UserCancel";
 import UserFinalCancel from "./UserFinalCancel";
 import HomeRetention from "./HomeRetention";
@@ -80,7 +80,7 @@ export default {
   components: {
     Cancelled,
     UserCancel2,
-    UserCancelInput,
+    SecondChance,
     UserCancel,
     // ResolveCall,
     UserFinalCancel,
@@ -94,7 +94,7 @@ export default {
   props: {},
   data: () => {
     return {
-      manageType: "cancel",
+      manageType: "finalCancel",
       cancelReason: "",
       cancelSubReason: "",
     };
@@ -138,6 +138,6 @@ export default {
   align-items: center;
   margin: 5px;
   box-shadow: 0 0px 0px rgba(0, 0, 0, 0.3), 0 5px 11px rgba(0, 0, 0, 0.22);
-  padding: 0 0 20px 0;
+  padding: 0 10px 20px 10px;
 }
 </style>

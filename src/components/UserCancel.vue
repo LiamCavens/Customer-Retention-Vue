@@ -41,8 +41,8 @@
 
     <button
       class="bnd-btn white-btn button"
-      @click="handleButton({ manageType: 'userCancelInput' })"
-      :disabled="!cancelSubReason"
+      @click="handleButton({ manageType: 'secondChance' })"
+      :disabled="!resolveType"
     >
       Continue Cancellation
     </button>

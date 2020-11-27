@@ -1,18 +1,31 @@
 <template>
   <div class="retention-component">
-    <h2 class="cancel-header">We're sorry to see you go</h2>
+    <h2 class="cancel-header">We'd love to know why you're cancelling</h2>
+
+    <textarea
+      class="cancel-box"
+      name="cancelReason"
+      id="cancelReason"
+      v-model="userInputReason"
+      cols="36"
+      rows="10"
+      placeholder="Type why you are leaving Bella & Duke"
+    ></textarea>
+
     <p class="cancelling-help-text">
       Can you tell us what food brand you will be moving to?
     </p>
+    <!-- :map-keydown="handleBrands" -->
     <v-select
       class="brand-chooser"
       placeholder="Choose food brand"
-      :options="foodBrands"
+      :filter="filterBrands"
+      :options="dynamicBrands"
       v-model="movingBrand"
       :calculate-position="withPopper"
       taggable
-      multiple
-      ><span slot="no-options">Type to see options</span></v-select
+    >
+      <span slot="no-options">Type to see options</span></v-select
     >
     <button
       class="bnd-btn white-btn button"
@@ -40,6 +53,8 @@ export default {
     return {
       movingBrand: "",
       cancelReason: "",
+      inputFood: "dog",
+      userInputReason: "",
       dynamicBrands: [],
       foodBrands: [
         "Applaws",
@@ -116,6 +131,20 @@ export default {
     };
   },
   methods: {
+    filterBrands(options, search) {
+      if (search.length < 2) return [];
+      else {
+        return this.foodBrands.filter((option) => {
+          return option.includes(search);
+        });
+      }
+    },
+    // handleBrands: (keyCodes, vm) => ({
+    //     ...keyCodes, 50: e => {
+    //         console.log(e)
+    //         console.log(vm.search)
+    //     }
+    // }),
     handleButton(manageType) {
       manageType.cancelReason = this.cancelReason;
       manageType.movingBrand = this.movingBrand;
@@ -202,7 +231,8 @@ export default {
 }
 
 .cancelling-help-text {
-  margin: 5px;
+  font-weight: 600;
+  margin: 20px 5px 5px;
   padding: 0 20px;
   font-size: 14px;
 }
@@ -219,9 +249,17 @@ export default {
 .bnd-btn {
   width: 300px;
 }
+.cancel-box {
+  font-family: Montserrat;
+  padding: 10px;
+  margin: 10px;
+}
 </style>
 
 <style >
+.brand-chooser {
+  margin: 20px 0;
+}
 .vs__dropdown-toggle,
 .vs__search::placeholder,
 .vs__dropdown-menu {
@@ -229,7 +267,7 @@ export default {
   background: #ffffff;
   color: #00263a;
   font-family: Montserrat;
-  margin: 20px 0;
+  /* margin: 20px 0; */
 }
 
 .brand-chooser .vs__dropdown-toggle,

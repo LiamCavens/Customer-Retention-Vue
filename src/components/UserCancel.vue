@@ -21,17 +21,21 @@
           {{ subReason.subReasonText }}
           <span
             class="checkedSub filled-circle"
-            v-if="subReason.subReason === cancelSubReason"
+            v-if="subReason.subReason === resolveType"
           ></span>
           <span
             class="checkedSub hollow-circle"
-            v-if="subReason.subReason != cancelSubReason"
+            v-if="subReason.subReason != resolveType"
           ></span>
         </p>
       </div>
 
       <div ref="subReasonRef">
-        <CounterCancel v-if="cancelSubReason" :reason="cancelSubReason" @manageSubmit="handleButton" />
+        <ResolveMethod
+          v-if="resolveType"
+          :reason="resolveType"
+          @manageResolve="handleResolve"
+        />
       </div>
     </BnDAccordion>
 
@@ -55,12 +59,13 @@
 
 <script>
 import BnDAccordion from "./BnDComponents/BnDAccordion";
-import CounterCancel from "./CounterCancel";
+import ResolveMethod from "./ResolveMethod";
+
 export default {
   name: "UserCancel",
   components: {
     BnDAccordion,
-    CounterCancel,
+    ResolveMethod,
   },
   props: {},
   data: () => {
@@ -69,6 +74,7 @@ export default {
       cancelSubReason: "",
       accordionHeight: 0,
       currentAccordion: -1,
+      resolveType: "",
       cancelReasons: [
         {
           text: `My pet is a fussy eater`,
@@ -88,7 +94,7 @@ export default {
             },
             {
               subReasonText: "Other",
-              subReason: "otherFussy",
+              subReason: "callResolve",
               solution: `Maybe if you talk to one of our team we can help you with whatever your problem is.`,
               solutionLinkText: "Call us",
             },
@@ -198,15 +204,20 @@ export default {
       manageType.subReason = this.cancelSubReason;
       this.$emit("manageSubmit", manageType);
     },
+    handleResolve(resolveType) {
+      this.resolveType = resolveType.resolveType;
+      this.resetAccordionHeight();
+    },
     handleSubReason(subReason, index) {
-      this.cancelSubReason = subReason;
+      this.resolveType = subReason;
       this.$emit("subReasonSubmit", subReason);
       this.resetAccordionHeight(index);
     },
     resetAccordionHeight(accordionIndex) {
+      // It collapses the full accordion when changing radio
+      accordionIndex = 0;
       let el = this.$refs.subReasonRef[accordionIndex];
       setTimeout(() => {
-        console.log(el.offsetHeight);
         this.accordionHeight = el.offsetHeight;
       }, 0);
     },

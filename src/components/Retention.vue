@@ -53,7 +53,7 @@
       />
 
       <!-- RESOLVE COMPONENTS -->
-      <ResolveCall v-if="manageType === 'callResolve'" />
+      <!-- <ResolveCall v-if="manageType === 'callResolve'" @manageSubmit="handleManage" /> -->
     </div>
   </div>
 </template>
@@ -73,7 +73,7 @@ import ManageTreatsAndAddons from "./ManageTreatsAndAddons";
 
 // RESOLVE COMPONENETS
 
-import ResolveCall from "./ResolveCall";
+// import ResolveCall from "./ResolveCall";
 
 export default {
   name: "retentionv2",
@@ -82,7 +82,7 @@ export default {
     UserCancel2,
     UserCancelInput,
     UserCancel,
-    ResolveCall,
+    // ResolveCall,
     UserFinalCancel,
     HomeRetention,
     HomeRetention2,

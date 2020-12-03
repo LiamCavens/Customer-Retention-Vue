@@ -3,9 +3,12 @@
     <h2>{{ header }}</h2>
     <p>{{ message }}</p>
 
-    <WistiaVideo v-if="reason === 'notEatFood'" videoLink="https://fast.wistia.com/embed/medias/rk0nnpgwi8" />
+    <WistiaVideo
+      v-if="reason === 'notEatFoodTHISISTOSTOPLOADING'"
+      videoLink="https://fast.wistia.com/embed/medias/rk0nnpgwi8"
+    />
 
-    <div v-if="reason === 'callResolve'" class="call-calendar">
+    <div v-if="reason === 'dontNeedAnymore'" class="call-calendar">
       <v-date-picker
         id="date-picker"
         v-model="requestCall"
@@ -17,21 +20,20 @@
         ]"
         is-inline
       />
-      <button
-        class="bnd-btn green-btn"
-        @click="handleResolve({ resolveType: 'requestCall' })"
-      >
-        Request Call
-      </button>
     </div>
-
-    <div v-if="reason === 'preferDry'">
-        <img class="dry-food-img" src="../assets/chickhearts.jpg" alt="dry food">
-              <button
+    <div style="width: 100%">
+      <img
+        v-if="ctaImage"
+        class="cta-img"
+        :src="require(`../assets/${ctaImage}`)"
+        alt="methodImage"
+      />
+      <button
+        v-if="ctaText"
         class="bnd-btn green-btn"
-        @click="handleResolve({ resolveType: 'switchToRaw' })"
+        @click="handleCta(ctaMethod)"
       >
-        Switch to Dry Raw
+        {{ ctaText }}
       </button>
     </div>
 
@@ -72,10 +74,13 @@ export default {
       header: "",
       message: "",
       videoLink: "",
+      ctaImage: "",
+      ctaText: "",
+      ctaMethod: "",
       buttonsHeader: "",
       resolveMethods: "",
       resolveMethod: "",
-            callSelected: false,
+      callSelected: false,
       requestCall: addBusinessDays(new Date(), 1),
       selectAttribute: {
         highlight: {
@@ -107,13 +112,19 @@ export default {
     handleResolve(resolveType) {
       this.$emit("manageResolve", resolveType);
     },
+    handleCta(ctaType) {
+      console.log(ctaType);
+    },
     loadReason() {
       switch (this.reason) {
         case "notEatFood":
-          this.header = `Lorem ipsum Scavenger Method`;
+          this.header = `Scavenger Method`;
           this.message = `If your dog has become a little picky, then try the Scavenger 1-2-3 method. Developed by our in-house canine behaviourist, Caroline, it has a 98% success rate with fussy dogs:`;
           this.videoLink = `https://fast.wistia.com/embed/medias/rk0nnpgwi8`;
-          this.buttonsHeader = `Suscipit lobortis nisl ut aliquip`;
+          this.buttonsHeader = `What about these issues?`;
+          this.ctaImage = false;
+          this.ctaText = false;
+          this.ctaMethod = false;
           this.resolveMethods = [
             {
               icon: "phone",
@@ -128,10 +139,13 @@ export default {
           ];
           break;
         case "preferDry":
-          this.header = `Lorem ipsum dolor sit Raw Dry dog food`;
-          this.message = `Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit:`;
-        //   this.videoLink = false;
-          this.buttonsHeader = `Suscipit lobortis nisl ut aliquip`;
+          this.header = `Raw Dry dog food`;
+          this.message = `If your dog is used to kibble, then they may prefer a bit of crunch. We offer Raw Dry dog food, natural raw ingredients simply dried.`;
+          this.videoLink = false;
+          this.ctaImage = "BD-121.jpg";
+          this.ctaText = "Order now";
+          this.ctaMethod = false;
+          this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
             {
               icon: "phone",
@@ -146,10 +160,13 @@ export default {
           ];
           break;
         case "callResolve":
-          this.header = `Lorem ipsum dolor sit our behaviourist`;
-          this.message = `Lorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sitLorem ipsum dolor sit:`;
-        //   this.videoLink = false;
-          this.buttonsHeader = `Suscipit lobortis nisl ut aliquip`;
+          this.header = `Speak to our behaviourist`;
+          this.message = `Some dogs need a little extra help. Arrange a call with our in-house canine behaviourist, Caroline.`;
+          this.videoLink = false;
+          this.ctaImage = "BnDLogo.png";
+          this.ctaText = "Request call";
+          this.ctaMethod = false;
+          this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
             {
               icon: "clipboard",
@@ -163,8 +180,239 @@ export default {
             },
           ];
           break;
+        case "dontNeedAnymore":
+          this.header = `Update Delivery Schedule`;
+          this.message = `You have complete control over your deliveries.`;
+          this.videoLink = false;
+          this.ctaImage = "BnDLogo.png";
+          this.ctaText = "Update";
+          this.ctaMethod = false;
+          this.buttonsHeader = `What about these issues?`;
+          this.resolveMethods = [
+            {
+              icon: "clipboard",
+              text: `Adjust delivery size`,
+              resolveMethod: "adjustDelivery",
+            },
+            {
+              icon: "bowl",
+              text: `Going on holiday?`,
+              resolveMethod: "holiday",
+            },
+          ];
+          break;
+        case "adjustDelivery":
+          this.header = `Adjust Delivery Size`;
+          this.message = `If you have run out of freezer space, you can switch to a smaller box and adjust how often you recieve it.`;
+          this.videoLink = false;
+          this.ctaImage = "BnDLogo.png";
+          this.ctaText = "Change delivery size";
+          this.ctaMethod = false;
+          this.buttonsHeader = `What about these issues?`;
+          this.resolveMethods = [
+            {
+              icon: "bowl",
+              text: `Going on holiday?`,
+              resolveMethod: "holiday",
+            },
+            {
+              icon: "bowl",
+              text: `Moving to another food`,
+              resolveMethod: "movingFood",
+            },
+          ];
+          break;
+        case "holiday":
+          this.header = `Are you taking the dog with you?`;
+          this.message = `You can update your delivery address, to save taking the food with you.`;
+          this.videoLink = false;
+          this.ctaImage = "BnDLogo.png";
+          this.ctaText = "Update delivery address";
+          this.ctaMethod = false;
+          this.buttonsHeader = `What about these issues?`;
+          this.resolveMethods = [
+            {
+              icon: "bowl",
+              text: `Moving to another food`,
+              resolveMethod: "movingFood",
+            },
+            {
+              icon: "bowl",
+              text: `I don't need it anymore`,
+              resolveMethod: "dontNeedAnymore",
+            },
+          ];
+          break;
+        case "movingFood":
+          this.header = `Compare us with your new food`;
+          this.message = `We believe our food is the best for your dog and we're willing to prove it!`;
+          this.videoLink = false;
+          this.ctaImage = "BnDLogo.png";
+          this.ctaText = "Compare now";
+          this.ctaMethod = false;
+          this.buttonsHeader = `What about these issues?`;
+          this.resolveMethods = [
+            {
+              icon: "bowl",
+              text: `I don't need it anymore`,
+              resolveMethod: "dontNeedAnymore",
+            },
+            {
+              icon: "clipboard",
+              text: `Adjust delivery size`,
+              resolveMethod: "adjustDelivery",
+            },
+          ];
+          break;
+        case "orderTooMuch":
+          this.header = `Adjust Delivery Size`;
+          this.message = `We offer smaller box sizes, which will lower your order price`;
+          this.videoLink = false;
+          this.ctaImage = "BnDLogo.png";
+          this.ctaText = "Change delivery size";
+          this.ctaMethod = false;
+          this.buttonsHeader = `What about these issues?`;
+          this.resolveMethods = [
+            {
+              icon: "bowl",
+              text: `Daily price too high`,
+              resolveMethod: "dailyTooMuch",
+            },
+            {
+              icon: "clipboard",
+              text: `I can't afford it`,
+              resolveMethod: "cantAfford",
+            },
+          ];
+          break;
+        case "dailyTooMuch":
+          this.header = `Adjust Delivery Size`;
+          this.message = `We offer larger box sizes, which come with a discount`;
+          this.videoLink = false;
+          this.ctaImage = "BnDLogo.png";
+          this.ctaText = "Change delivery size";
+          this.ctaMethod = false;
+          this.buttonsHeader = `What about these issues?`;
+          this.resolveMethods = [
+            {
+              icon: "bowl",
+              text: `Order price too high`,
+              resolveMethod: "orderTooMuch",
+            },
+            {
+              icon: "bowl",
+              text: `Daily price too high`,
+              resolveMethod: "dailyTooMuch",
+            },
+          ];
+          break;
+        case "cantAfford":
+          this.header = `Quality food for healthy pets`;
+          this.message = `All of our meals are designed to support your pet's health. They are made from the highest quslity, 100% natural ingredients, carefully sourced from British & Irish farms.`;
+          this.videoLink = false;
+          this.ctaImage = "BnDLogo.png";
+          this.ctaText = "Find out more";
+          this.ctaMethod = false;
+          this.buttonsHeader = `What about these issues?`;
+          this.resolveMethods = [
+            {
+              icon: "clipboard",
+              text: `I can't afford it`,
+              resolveMethod: "cantAfford",
+            },
+            {
+              icon: "bowl",
+              text: `Order price too high`,
+              resolveMethod: "dailyTooMuch",
+            },
+          ];
+          break;
+        case "deliveryIssues":
+          this.header = `Let us know what happened`;
+          this.message = `We will take this up with our couriers so we can improve our service`;
+          this.videoLink = false;
+          this.ctaImage = false;
+          this.ctaText = "Submit";
+          this.ctaMethod = false;
+          this.buttonsHeader = `What about these issues?`;
+          this.resolveMethods = [
+            {
+              icon: "clipboard",
+              text: `I don't want to defrost`,
+              resolveMethod: "notDefrost",
+            },
+            {
+              icon: "bowl",
+              text: `I dont want a subscription`,
+              resolveMethod: "dontWantSubscription",
+            },
+          ];
+          break;
+        case "notDefrost":
+          this.header = `Frozen to lock in nutrients`;
+          this.message = `Our natural ingredients are simple mixed together and frozen to lock in nutrients. This removes the need for nasty preservatives.`;
+          this.videoLink = false;
+          this.ctaImage = "BnDLogo.png";
+          this.ctaText = "Help with defrosting";
+          this.ctaMethod = false;
+          this.buttonsHeader = `What about these issues?`;
+          this.resolveMethods = [
+            {
+              icon: "bowl",
+              text: `I dont want a subscription`,
+              resolveMethod: "dontWantSubscription",
+            },
+            {
+              icon: "bowl",
+              text: `Delivery issues`,
+              resolveMethod: "deliveryIssues",
+            },
+          ];
+          break;
+        case "dontWantSubscription":
+          this.header = `Take control of your customer portal`;
+          this.message = `Auto-deliveries mean you won't run out of food. However, if you want to manage this manually you can adjust delivery schedule, payment method and order details, in your customer portal.`;
+          this.videoLink = false;
+          this.ctaImage = "BnDLogo.png";
+          this.ctaText = "Modify subscription";
+          this.ctaMethod = false;
+          this.buttonsHeader = `What about these issues?`;
+          this.resolveMethods = [
+            {
+              icon: "clipboard",
+              text: `I don't want to defrost`,
+              resolveMethod: "notDefrost",
+            },
+            {
+              icon: "bowl",
+              text: `Delivery issues`,
+              resolveMethod: "deliveryIssues",
+            },
+          ];
+          break;
+        case "intolerance":
+          this.header = `Customise your order`;
+          this.message = `Many intolerances are a result of a processed diet, focused on the same protein day in day out. We belive that a varied diet resolves this, however you can adjust flavours or change range here`;
+          this.videoLink = false;
+          this.ctaImage = "BnDLogo.png";
+          this.ctaText = "Modify subscription";
+          this.ctaMethod = false;
+          this.buttonsHeader = `What about these issues?`;
+          this.resolveMethods = false;
+          break;
+        case "petPassed":
+          this.header = `Sorry for your loss`;
+          this.message = `Losing a member of the family is never easy, but we are here to help in any way we can.`;
+          this.videoLink = false;
+          this.ctaImage = "BnDLogo.png";
+          this.ctaText = "Cancel";
+          this.ctaMethod = false;
+          this.buttonsHeader = '';
+          this.resolveMethods = false;
+          break;
         default:
-          this.header = this.message = this.videoLink = this.buttonsHeader = "";
+          this.header = this.message = this.videoLink = this.buttonsHeader = this.resolveMethods =
+            "";
           break;
       }
     },
@@ -182,10 +430,10 @@ export default {
 
 <style scoped>
 #scav-method {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .buttonsHeader {
   margin-bottom: 5px;
@@ -228,14 +476,15 @@ export default {
   height: 80px;
 }
 
-.dry-food-img {
-    height: 190px;
-    border-radius: 50%;
+.cta-img {
+  height: 190px;
+  width: 190px;
+  border-radius: 50%;
 }
 
 .green-btn {
-    width: 100%;
-    margin: 30px 0 10px;
+  width: 100%;
+  margin: 30px 0 10px;
 }
 </style>
 

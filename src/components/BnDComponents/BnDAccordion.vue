@@ -61,6 +61,10 @@ export default {
     enter: function (el) {
       el.style.height = el.scrollHeight + "px";
     },
+    enterNew: function (newHeight) {
+      let el = this.$refs.accordionDynamic;
+      el.style.height = newHeight + "px";
+    },
     beforeLeave: function (el) {
       el.style.height = el.scrollHeight + "px";
     },
@@ -79,11 +83,15 @@ export default {
   },
   watch: {
     heightProp: function () {
-      let el = this.$refs.accordionDynamic;
+      console.log('Liam: this.heightProp');
+      console.log(this.heightProp);
       if (this.heightProp === 0) {
-        return (el.style.height = 100 + "px");
+          let accordion = this.$refs.accordionDynamic;
+          console.log('Liam: accordion');
+          console.log(accordion);
       }
-      this.enter(el);
+      let newHeight = this.heightProp + 15;
+      this.enterNew(newHeight);
     },
     showThis: function () {
       this.show = this.showThis;

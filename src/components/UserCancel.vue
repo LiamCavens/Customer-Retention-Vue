@@ -7,35 +7,40 @@
       :key="index"
       class="cancel-accordion"
       :heightProp="accordionHeight"
-      @opened="currentAccordion = index"
+      @opened="
+        resetReason(index, currentAccordion);
+        currentAccordion = index;
+      "
       :showThis="index === currentAccordion"
     >
       <div slot="header">{{ cancel.text }}</div>
-      <div class="subreasons">
-        <p
-          class="subreason"
-          v-for="(subReason, index) in cancel.subReasons"
-          :key="index"
-          @click="handleSubReason(subReason.subReason, index)"
-        >
-          {{ subReason.subReasonText }}
-          <span
-            class="checkedSub filled-circle"
-            v-if="subReason.subReason === resolveType"
-          ></span>
-          <span
-            class="checkedSub hollow-circle"
-            v-if="subReason.subReason != resolveType"
-          ></span>
-        </p>
-      </div>
-
       <div ref="subReasonRef">
-        <ResolveMethod
-          v-if="resolveType"
-          :reason="resolveType"
-          @manageResolve="handleResolve"
-        />
+        <div class="subreasons">
+          <p
+            class="subreason"
+            v-for="(subReason, index) in cancel.subReasons"
+            :key="index"
+            @click="handleSubReason(subReason.subReason, index)"
+          >
+            {{ subReason.subReasonText }}
+            <span
+              class="checkedSub filled-circle"
+              v-if="subReason.subReason === resolveType"
+            ></span>
+            <span
+              class="checkedSub hollow-circle"
+              v-if="subReason.subReason != resolveType"
+            ></span>
+          </p>
+        </div>
+
+        <div>
+          <ResolveMethod
+            v-if="resolveType"
+            :reason="resolveType"
+            @manageResolve="handleResolve"
+          />
+        </div>
       </div>
     </BnDAccordion>
 
@@ -83,116 +88,86 @@ export default {
             {
               subReasonText: "He/She wouldn't eat the food",
               subReason: "notEatFood",
-              solution: `Have you tried our Scavenger Method? Developed by Caroline, our in-house behaviourist, this method has a 95% success rate.`,
-              solutionLinkText: "Learn More",
             },
             {
               subReasonText: "He/she prefers dry food",
               subReason: "preferDry",
-              solution: `Have you tried our Scavenger Method? Developed by Caroline, our in-house behaviourist, this method has a 95% success rate.`,
-              solutionLinkText: "Learn More",
             },
             {
               subReasonText: "Other",
               subReason: "callResolve",
-              solution: `Maybe if you talk to one of our team we can help you with whatever your problem is.`,
-              solutionLinkText: "Call us",
             },
           ],
         },
         {
           text: `I don't need the food`,
-          cancelReason: `r2`,
+          cancelReason: `dontNeedFood`,
           subReasons: [
             {
               subReasonText: "I don't need it anymore",
-              subReason: "sr4",
-              solution: `Though you might not need it now, if you will be needing orders soon, we offer you the choice to skip a number of deliveries so you dont forget and leave your dog hungry for Bella and Dukes!`,
-              solutionLinkText: "Learn More",
+              subReason: "dontNeedAnymore",
             },
             {
               subReasonText: "It's too much food for freezer",
-              subReason: "sr5",
-              solution: `If you're struggling with freezer space, we can adjust the box size and frequency to adjust the amount of freezer space you have, if its a new freezer, we do have discount codes for you to use with our partnered sites.`,
-              solutionLinkText: "Learn More",
+              subReason: "adjustDelivery",
             },
             {
               subReasonText: "I'm going on Holiday",
-              subReason: "sr6",
-              solution: `We can change the delivery address and dates to suit you and your dog better, or we can skip a delivery until you are back home.`,
-              solutionLinkText: "Learn More",
+              subReason: "holiday",
             },
             {
               subReasonText: "I'm moving to another food",
-              subReason: "sr15",
-              solution: `We're sorry to hear this, are you able to tell us why you have decided to leave us? you can call one of our team to resolve any queries or you can let us know with a message next`,
-              solutionLinkText: "Call us",
+              subReason: "movingFood",
             },
           ],
         },
         {
           text: `Price`,
-          cancelReason: `r3`,
+          cancelReason: `price`,
           subReasons: [
             {
               subReasonText: "The order price is too much",
-              subReason: "sr7",
-              solution: `We do offer smaller box sizes which will lower your order price`,
-              solutionLinkText: "Learn More",
+              subReason: "orderTooMuch",
             },
             {
               subReasonText: "The daily price is too high",
-              subReason: "sr8",
-              solution: `We offer larger box sizes, which come with a discount`,
-              solutionLinkText: "Learn More",
+              subReason: "dailyTooMuch",
             },
             {
               subReasonText: "I can't afford it",
-              subReason: "sr9",
-              solution: `If you would like to know why the prices of Bella and Duke are higher than average, we can have our customer team go through it with you, we offer the best nutrients to keep your pet healthy and living longer!`,
-              solutionLinkText: "Call us",
+              subReason: "cantAfford",
             },
           ],
         },
         {
           text: `Convenience`,
-          cancelReason: `r4`,
+          cancelReason: `convenience`,
           subReasons: [
             {
               subReasonText: "I've experienced delivery issues",
-              subReason: "sr10",
-              solution: `You can call the team to let us know what has happened, as it may be out of our control but we would love to resolve the problem`,
-              solutionLinkText: "Call us",
+              subReason: "deliveryIssues",
             },
             {
               subReasonText: "I don't want to have to defrost it",
-              subReason: "sr11",
-              solution: `Frozen ingredients & cold temp production locks in the nutrients, please click the link to learn more why this is best for your pets`,
-              solutionLinkText: "Learn More",
+              subReason: "notDefrost",
             },
             {
               subReasonText: "I don't want a subscription",
-              subReason: "sr12",
-              solution: `You can manage your delivery schedule, payment method and order details, giving you complete control, click the link to modify your subscription`,
-              solutionLinkText: "Manage Subscription",
+              subReason: "dontWantSubscription",
             },
           ],
         },
         {
           text: `Dogs Health`,
-          cancelReason: `r4`,
+          cancelReason: `dogHealth`,
           subReasons: [
             {
               subReasonText: "My pet has an intolerance",
-              subReason: "sr13",
-              solution: `Many intolerances are a result of a processed diet, focused on the same protein day in day out. We belive that a varied diet resolves this, however you can adjust flavours here`,
-              solutionLinkText: "Learn More",
+              subReason: "intolerance",
             },
             {
               subReasonText: "My pet has died",
-              subReason: "sr14",
-              solution: `Losing a member of the family is never easy, but we are here to help in any way we can`,
-              solutionLinkText: "",
+              subReason: "petDied",
             },
           ],
         },
@@ -213,13 +188,21 @@ export default {
       this.$emit("subReasonSubmit", subReason);
       this.resetAccordionHeight(index);
     },
-    resetAccordionHeight(accordionIndex) {
-      // It collapses the full accordion when changing radio
-      accordionIndex = 0;
-      let el = this.$refs.subReasonRef[accordionIndex];
+    resetReason(accordionIndex, previousAccordion) {
+      if (accordionIndex != previousAccordion) {
+        this.resolveType = "";
+      }
       setTimeout(() => {
-        this.accordionHeight = el.offsetHeight;
+        this.resetAccordionHeight(accordionIndex);
       }, 0);
+    },
+    resetAccordionHeight(newIndex) {
+      if (!newIndex) newIndex = 0;
+      setTimeout(() => {
+        let el = this.$refs.subReasonRef[newIndex];
+        console.log(el);
+        this.accordionHeight = el.offsetHeight;
+      }, 100);
     },
   },
 };

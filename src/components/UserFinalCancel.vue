@@ -135,16 +135,11 @@ export default {
       if (search.length < 2) return [];
       else {
         return this.foodBrands.filter((option) => {
-          return option.includes(search);
+        if (option.toUpperCase().includes(search.toUpperCase()))
+          return option;
         });
       }
     },
-    // handleBrands: (keyCodes, vm) => ({
-    //     ...keyCodes, 50: e => {
-    //         console.log(e)
-    //         console.log(vm.search)
-    //     }
-    // }),
     handleButton(manageType) {
       manageType.cancelReason = this.cancelReason;
       manageType.movingBrand = this.movingBrand;

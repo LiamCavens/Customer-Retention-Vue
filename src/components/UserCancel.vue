@@ -167,7 +167,7 @@ export default {
             },
             {
               subReasonText: "My pet has died",
-              subReason: "petDied",
+              subReason: "petPassed",
             },
           ],
         },

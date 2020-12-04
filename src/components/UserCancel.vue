@@ -113,7 +113,7 @@ export default {
             },
             {
               subReasonText: "I'm going on Holiday",
-              subReason: "holiday",
+              subReason: "newAddress",
             },
             {
               subReasonText: "I'm moving to another food",

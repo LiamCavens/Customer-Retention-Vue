@@ -195,9 +195,9 @@ export default {
               resolveMethod: "adjustDelivery",
             },
             {
-              icon: "bowl",
-              text: `Going on holiday?`,
-              resolveMethod: "holiday",
+              icon: "pin",
+              text: `Update my delivery address?`,
+              resolveMethod: "newAddress",
             },
           ];
           break;
@@ -211,9 +211,9 @@ export default {
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
             {
-              icon: "bowl",
-              text: `Going on holiday?`,
-              resolveMethod: "holiday",
+              icon: "pin",
+              text: `Update my delivery address?`,
+              resolveMethod: "newAddress",
             },
             {
               icon: "bowl",
@@ -222,7 +222,7 @@ export default {
             },
           ];
           break;
-        case "holiday":
+        case "newAddress":
           this.header = `Are you taking the dog with you?`;
           this.message = `You can update your delivery address, to save taking the food with you.`;
           this.videoLink = false;

@@ -190,7 +190,7 @@ export default {
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
             {
-              icon: "clipboard",
+              icon: "boxsizesg",
               text: `Adjust delivery size`,
               resolveMethod: "adjustDelivery",
             },
@@ -237,7 +237,7 @@ export default {
               resolveMethod: "movingFood",
             },
             {
-              icon: "bowl",
+              icon: "calendar",
               text: `I don't need it anymore`,
               resolveMethod: "dontNeedAnymore",
             },
@@ -253,7 +253,7 @@ export default {
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
             {
-              icon: "bowl",
+              icon: "calendar",
               text: `I don't need it anymore`,
               resolveMethod: "dontNeedAnymore",
             },
@@ -274,12 +274,12 @@ export default {
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
             {
-              icon: "bowl",
+              icon: "boxsizesg",
               text: `Daily price too high`,
               resolveMethod: "dailyTooMuch",
             },
             {
-              icon: "clipboard",
+              icon: "healthyheart",
               text: `I can't afford it`,
               resolveMethod: "cantAfford",
             },
@@ -295,14 +295,14 @@ export default {
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
             {
-              icon: "bowl",
+              icon: "boxsizesg",
               text: `Order price too high`,
               resolveMethod: "orderTooMuch",
             },
             {
-              icon: "bowl",
-              text: `Daily price too high`,
-              resolveMethod: "dailyTooMuch",
+              icon: "healthyheart",
+              text: `I can't afford it`,
+              resolveMethod: "cantAfford",
             },
           ];
           break;
@@ -316,9 +316,9 @@ export default {
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
             {
-              icon: "clipboard",
-              text: `I can't afford it`,
-              resolveMethod: "cantAfford",
+              icon: "boxsizesg",
+              text: `Daily price too high`,
+              resolveMethod: "dailyTooMuch",
             },
             {
               icon: "bowl",
@@ -337,12 +337,12 @@ export default {
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
             {
-              icon: "clipboard",
+              icon: "frozen",
               text: `I don't want to defrost`,
               resolveMethod: "notDefrost",
             },
             {
-              icon: "bowl",
+              icon: "clipboard",
               text: `I dont want a subscription`,
               resolveMethod: "dontWantSubscription",
             },
@@ -358,12 +358,12 @@ export default {
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
             {
-              icon: "bowl",
+              icon: "clipboard",
               text: `I dont want a subscription`,
               resolveMethod: "dontWantSubscription",
             },
             {
-              icon: "bowl",
+              icon: "van",
               text: `Delivery issues`,
               resolveMethod: "deliveryIssues",
             },
@@ -379,12 +379,12 @@ export default {
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
             {
-              icon: "clipboard",
+              icon: "frozen",
               text: `I don't want to defrost`,
               resolveMethod: "notDefrost",
             },
             {
-              icon: "bowl",
+              icon: "van",
               text: `Delivery issues`,
               resolveMethod: "deliveryIssues",
             },
@@ -407,7 +407,7 @@ export default {
           this.ctaImage = "BnDLogo.png";
           this.ctaText = "Cancel";
           this.ctaMethod = false;
-          this.buttonsHeader = '';
+          this.buttonsHeader = "";
           this.resolveMethods = false;
           break;
         default:

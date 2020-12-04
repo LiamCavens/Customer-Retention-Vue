@@ -3,24 +3,24 @@
     <h2 class="cancel-header">Help us understand why you are cancelling</h2>
     <!-- :fasIcon="['far', 'circle']" -->
     <BnDAccordion
-      v-for="(cancel, index) in cancelReasons"
-      :key="index"
+      v-for="(cancel, accordionIndex) in cancelReasons"
+      :key="accordionIndex"
       class="cancel-accordion"
       :heightProp="accordionHeight"
       @opened="
-        resetReason(index, currentAccordion);
-        currentAccordion = index;
+        resetReason(accordionIndex, currentAccordion);
+        currentAccordion = accordionIndex;
       "
-      :showThis="index === currentAccordion"
+      :showThis="accordionIndex === currentAccordion"
     >
       <div slot="header">{{ cancel.text }}</div>
       <div ref="subReasonRef">
         <div class="subreasons">
           <p
             class="subreason"
-            v-for="(subReason, index) in cancel.subReasons"
-            :key="index"
-            @click="handleSubReason(subReason.subReason, index)"
+            v-for="(subReason, subIndex) in cancel.subReasons"
+            :key="subIndex"
+            @click="handleSubReason(subReason.subReason, accordionIndex)"
           >
             {{ subReason.subReasonText }}
             <span
@@ -181,26 +181,29 @@ export default {
     },
     handleResolve(resolveType) {
       this.resolveType = resolveType.resolveType;
-      this.resetAccordionHeight();
+      this.resetAccordionHeight(this.currentAccordion);
     },
-    handleSubReason(subReason, index) {
+    handleSubReason(subReason, accordionIndex) {
       this.resolveType = subReason;
       this.$emit("subReasonSubmit", subReason);
-      this.resetAccordionHeight(index);
+      this.resetAccordionHeight(accordionIndex);
     },
     resetReason(accordionIndex, previousAccordion) {
       if (accordionIndex != previousAccordion) {
-        this.resolveType = "";
+        this.resolveType = this.cancelReason = this.cancelSubReason = "";
+        // Get subreasons and get their height
+        let subReasonEl = this.$refs.subReasonRef[accordionIndex];
+        this.accordionHeight = subReasonEl.offsetHeight;
+        setTimeout(() => {
+          let subReasonEl = this.$refs.subReasonRef[accordionIndex];
+          this.accordionHeight = subReasonEl.offsetHeight;
+        }, 100);
       }
-      setTimeout(() => {
-        this.resetAccordionHeight(accordionIndex);
-      }, 0);
     },
     resetAccordionHeight(newIndex) {
       if (!newIndex) newIndex = 0;
       setTimeout(() => {
         let el = this.$refs.subReasonRef[newIndex];
-        console.log(el);
         this.accordionHeight = el.offsetHeight;
       }, 100);
     },

@@ -20,7 +20,7 @@
             class="subreason"
             v-for="(subReason, subIndex) in cancel.subReasons"
             :key="subIndex"
-            @click="handleSubReason(subReason.subReason, accordionIndex)"
+            @click="handleReason(subReason.subReason, accordionIndex)"
           >
             {{ subReason.subReasonText }}
             <span
@@ -38,7 +38,7 @@
           <ResolveMethod
             v-if="resolveType"
             :reason="resolveType"
-            @manageResolve="handleResolve"
+            @manageResolve="handleButton"
           />
         </div>
       </div>
@@ -183,9 +183,9 @@ export default {
       this.resolveType = resolveType.resolveType;
       this.resetAccordionHeight(this.currentAccordion);
     },
-    handleSubReason(subReason, accordionIndex) {
+    handleReason(subReason, accordionIndex) {
       this.resolveType = subReason;
-      this.$emit("subReasonSubmit", subReason);
+      this.$emit("handleReason", subReason);
       this.resetAccordionHeight(accordionIndex);
     },
     resetReason(accordionIndex, previousAccordion) {

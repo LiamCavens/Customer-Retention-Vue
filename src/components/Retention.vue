@@ -34,7 +34,7 @@
         v-if="manageType === 'cancel'"
         :cancelReason="cancelReason"
         @manageSubmit="handleManage"
-        @subReasonSubmit="handleSubReason"
+        @handleReason="handleReason"
       />
       <SecondChance
         v-if="manageType === 'secondChance'"
@@ -105,6 +105,9 @@ export default {
     },
     handleSubReason(subReason) {
       this.cancelSubReason = subReason;
+    },
+    handleReason(reason){
+        this.cancelReason = reason;
     },
   },
 };

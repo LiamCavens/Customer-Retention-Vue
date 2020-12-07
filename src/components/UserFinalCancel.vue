@@ -1,12 +1,13 @@
 <template>
   <div class="retention-component">
-    <h2 class="cancel-header">We'd love to know why you're cancelling</h2>
+    <h2 v-if="cancelReason !== 'deliveryIssues'" class="cancel-header">We'd love to know why you're cancelling</h2>
 
     <textarea
+      v-if="cancelReason !== 'deliveryIssues'"
       class="cancel-box"
-      name="cancelReason"
-      id="cancelReason"
-      v-model="userInputReason"
+      name="cancelReasonText"
+      id="cancelReasonText"
+      v-model="cancelReasonText"
       cols="36"
       rows="10"
       placeholder="Type why you are leaving Bella & Duke"
@@ -27,6 +28,9 @@
     >
       <span slot="no-options">Type to see options</span></v-select
     >
+
+    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Something something about dog.</h3>
+
     <button
       class="bnd-btn white-btn button"
       @click="handleButton({ manageType: 'cancelled' })"
@@ -48,13 +52,14 @@ import { createPopper } from "@popperjs/core";
 export default {
   name: "UserFinalCancel",
   components: {},
-  props: {},
+  props: {
+      cancelReason: String
+  },
   data: () => {
     return {
       movingBrand: "",
-      cancelReason: "",
       inputFood: "dog",
-      userInputReason: "",
+      cancelReasonText: "",
       dynamicBrands: [],
       foodBrands: [
         "Applaws",
@@ -141,7 +146,7 @@ export default {
       }
     },
     handleButton(manageType) {
-      manageType.cancelReason = this.cancelReason;
+      manageType.cancelReasonText = this.cancelReasonText;
       manageType.movingBrand = this.movingBrand;
       this.$emit("manageSubmit", manageType);
     },
@@ -189,6 +194,9 @@ export default {
        */
       return () => popper.destroy();
     },
+  },
+  mounted() {
+      console.log(this.cancelReason)
   },
 };
 </script>

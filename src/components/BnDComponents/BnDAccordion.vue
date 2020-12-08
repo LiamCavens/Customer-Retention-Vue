@@ -52,8 +52,10 @@ export default {
       return require(`../../assets/${iconUrl}.png`);
     },
     toggle: function () {
-      this.show = !this.show;
-      this.$emit("opened");
+      setTimeout(() => {
+        this.show = !this.show;
+        this.$emit("opened");
+      }, 100);
     },
     beforeEnter: function (el) {
       el.style.height = "0";
@@ -83,12 +85,8 @@ export default {
   },
   watch: {
     heightProp: function () {
-      console.log('Liam: this.heightProp');
-      console.log(this.heightProp);
       if (this.heightProp === 0) {
-          let accordion = this.$refs.accordionDynamic;
-          console.log('Liam: accordion');
-          console.log(accordion);
+        //   let accordion = this.$refs.accordionDynamic;
       }
       let newHeight = this.heightProp + 15;
       this.enterNew(newHeight);

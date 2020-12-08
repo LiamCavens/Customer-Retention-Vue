@@ -47,7 +47,7 @@
 
 <script>
 export default {
-  name: "BnDNutritionVideo",
+  name: "WistiaVideo",
   props: {},
   data: () => {
     return {};

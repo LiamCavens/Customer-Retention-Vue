@@ -3,7 +3,8 @@
     <h2>{{ header }}</h2>
     <p>{{ message }}</p>
 
-    <WistiaVideo v-if="reason === 'notEatFood'" />
+    <!-- <WistiaVideo v-if="reason === 'notEatFood'" /> -->
+    <WistiaVideo />
 
     <div v-if="reason === 'dontNeedAnymore'" class="call-calendar">
       <v-date-picker
@@ -153,8 +154,8 @@ export default {
       switch (this.reason) {
         case "notEatFood":
           this.header = `Scavenger Method`;
-          this.message = `If your dog has become a little picky, then try the Scavenger 1-2-3 method. Developed by our in-house canine behaviourist, Caroline, it has a 98% success rate with fussy dogs:`;
-          this.videoLink = `https://fast.wistia.com/embed/medias/rk0nnpgwi8`;
+          this.message = `If your dog has become a little picky, then try the Scavenger 1-2-3 method. Developed by our in-house canine behaviourist, Caroline, it workes with 9/10 dogs:`;
+        //   this.videoLink = `https://fast.wistia.com/embed/medias/rk0nnpgwi8`;
           this.buttonsHeader = `What about these issues?`;
           this.ctaImage = false;
           this.ctaLink = false;
@@ -191,7 +192,7 @@ export default {
             },
             {
               icon: "clipboard",
-              text: `try our 98% effective Scavenger Method`,
+              text: `try our effective Scavenger Method`,
               resolveMethod: "notEatFood",
             },
           ];
@@ -209,7 +210,7 @@ export default {
           this.resolveMethods = [
             {
               icon: "clipboard",
-              text: `try our 98% effective Scavenger Method`,
+              text: `try our effective Scavenger Method`,
               resolveMethod: "notEatFood",
             },
             {

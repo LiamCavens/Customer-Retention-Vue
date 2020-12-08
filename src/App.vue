@@ -27,6 +27,8 @@ export default {
   display: flex;
   flex-flow: column;
   align-items: center;
+  margin-left: calc(100vw - 100%);
+  margin-right: 0;
 }
 
 .headerLogo {

@@ -9,7 +9,7 @@
         style="height: 100%; left: 0; position: absolute; top: 0; width: 100%"
       >
         <div
-          :class="`wistia_embed wistia_async_${linkSuffix} videoFoam=true`"
+          class="wistia_embed wistia_async_6r13jxpt46 videoFoam=true"
           style="height: 100%; position: relative; width: 100%"
         >
           <div
@@ -26,7 +26,7 @@
             "
           >
             <img
-              :src="videoLink + '/swatch'"
+              src="https://fast.wistia.com/embed/medias/6r13jxpt46/swatch"
               style="
                 filter: blur(5px);
                 height: 100%;
@@ -47,23 +47,17 @@
 
 <script>
 export default {
-  name: "WistiaVid",
-  props: {
-      videoLink: String
-  },
+  name: "BnDNutritionVideo",
+  props: {},
   data: () => {
-    return {
-        linkSuffix: ''
-    };
+    return {};
   },
   methods: {},
   beforeMount() {
-    if (!this.videoLink) return;
-    this.linkSuffix = this.videoLink.split("/").pop();
     const script1 = document.createElement("script");
     const script2 = document.createElement("script");
 
-    script1.src = `${this.videoLink}.jsonp`;
+    script1.src = "https://fast.wistia.com/embed/medias/6r13jxpt46.jsonp";
     script1.async = true;
 
     script2.src = "https://fast.wistia.com/assets/external/E-v1.js";

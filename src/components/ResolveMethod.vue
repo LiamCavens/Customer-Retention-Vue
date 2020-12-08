@@ -3,10 +3,7 @@
     <h2>{{ header }}</h2>
     <p>{{ message }}</p>
 
-    <WistiaVideo
-      v-if="reason === 'notEatFoodTHISISTOSTOPLOADING'"
-      videoLink="https://fast.wistia.com/embed/medias/rk0nnpgwi8"
-    />
+    <WistiaVideo v-if="reason === 'notEatFood'" />
 
     <div v-if="reason === 'dontNeedAnymore'" class="call-calendar">
       <v-date-picker
@@ -23,7 +20,7 @@
     </div>
 
     <textarea
-      v-if="reason === 'deliveryIssues'"
+      v-if="reason === 'deliveryIssues' && !submittedToCS"
       class="cancel-box"
       name="cancelReasonText"
       id="cancelReasonText"
@@ -33,6 +30,13 @@
       placeholder="Can you tell us more about your issue?"
     ></textarea>
 
+    <div v-if="submittedToCS">
+      <p>
+        Your issue has been passed on to our amazing customer service team, we
+        will review this and forward it to our delivery courier
+      </p>
+    </div>
+
     <div style="width: 100%">
       <img
         v-if="ctaImage"
@@ -41,10 +45,7 @@
         alt="methodImage"
       />
       <a v-if="ctaLink" :href="ctaLink" target="_blank">
-        <button
-          v-if="ctaText"
-          class="bnd-btn green-btn"
-        >
+        <button v-if="ctaText" class="bnd-btn green-btn">
           {{ ctaText }}
         </button>
       </a>
@@ -102,6 +103,8 @@ export default {
       resolveMethods: "",
       resolveMethod: "",
       callSelected: false,
+      submittedToCS: false,
+      cancelReasonText: "",
       requestCall: addBusinessDays(new Date(), 1),
       selectAttribute: {
         highlight: {
@@ -134,8 +137,16 @@ export default {
       this.$emit("manageResolve", resolveType);
     },
     handleCta(ctaType) {
-      if (ctaType === "finalCancel") {
+      if (ctaType === "cancelled") {
         this.handleResolve({ manageType: ctaType });
+      }
+      if (ctaType === "example2") {
+        this.handleResolve({ manageType: ctaType });
+      }
+      if (ctaType === "submitToCS") {
+        this.submittedToCS = true;
+        this.ctaText = "Return to portal";
+        this.ctaMethod = "example2";
       }
     },
     loadReason() {
@@ -168,7 +179,8 @@ export default {
           this.videoLink = false;
           this.ctaImage = "BD-121.jpg";
           this.ctaText = "Order now";
-          this.ctaLink = 'https://hello.bellaandduke.com/member/product-details/76';
+          this.ctaLink =
+            "https://hello.bellaandduke.com/member/product-details/76";
           this.ctaMethod = false;
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
@@ -190,7 +202,8 @@ export default {
           this.videoLink = false;
           this.ctaImage = "bd_caroline.png";
           this.ctaText = "Request call";
-          this.ctaLink = "https://www.bellaandduke.com/dog-mealtime-advice-webinar/"
+          this.ctaLink =
+            "https://www.bellaandduke.com/dog-mealtime-advice-webinar/";
           this.ctaMethod = false;
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
@@ -233,7 +246,8 @@ export default {
           this.message = `If you have run out of freezer space, you can switch to a smaller box and adjust how often you recieve it.`;
           this.videoLink = false;
           this.ctaImage = "boxsizesg.png";
-          this.ctaLink = 'https://hello.bellaandduke.com/member/subscription-change-order-size';
+          this.ctaLink =
+            "https://hello.bellaandduke.com/member/subscription-change-order-size";
           this.ctaText = "Change delivery size";
           this.ctaMethod = false;
           this.buttonsHeader = `What about these issues?`;
@@ -254,7 +268,7 @@ export default {
           this.header = `Are you taking the dog with you?`;
           this.message = `You can update your delivery address, to save taking the food with you.`;
           this.videoLink = false;
-          this.ctaLink = 'https://hello.bellaandduke.com/member/form-address';
+          this.ctaLink = "https://hello.bellaandduke.com/member/form-address";
           this.ctaImage = "holidaydog.png";
           this.ctaText = "Update delivery address";
           this.ctaMethod = false;
@@ -276,8 +290,8 @@ export default {
           this.header = `Compare us with your new food`;
           this.message = `We believe our food is the best for your dog and we're willing to prove it!`;
           this.videoLink = false;
-          this.ctaImage = "BnDLogo.png";
-          this.ctaLink = false;
+          this.ctaImage = "rawvdry.png";
+          this.ctaLink = "https://www.bellaandduke.com/how-it-works/";
           this.ctaText = "Compare now";
           this.ctaMethod = false;
           this.buttonsHeader = `What about these issues?`;
@@ -299,7 +313,8 @@ export default {
           this.message = `We offer smaller box sizes, which will lower your order price`;
           this.videoLink = false;
           this.ctaImage = "boxsizesg.png";
-          this.ctaLink = 'https://hello.bellaandduke.com/member/subscription-change-order-size';
+          this.ctaLink =
+            "https://hello.bellaandduke.com/member/subscription-change-order-size";
           this.ctaText = "Change delivery size";
           this.ctaMethod = false;
           this.buttonsHeader = `What about these issues?`;
@@ -322,7 +337,8 @@ export default {
           this.videoLink = false;
           this.ctaImage = "boxsizeso.png";
           this.ctaText = "Change delivery size";
-          this.ctaLink = 'https://hello.bellaandduke.com/member/subscription-change-order-size';
+          this.ctaLink =
+            "https://hello.bellaandduke.com/member/subscription-change-order-size";
           this.ctaMethod = false;
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
@@ -345,7 +361,7 @@ export default {
           this.ctaImage = "chickenbox.png";
           this.ctaText = "Find out more";
           this.ctaMethod = false;
-          
+
           this.ctaLink = "https://www.bellaandduke.com/nutrition/";
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
@@ -368,7 +384,7 @@ export default {
           this.ctaImage = false;
           this.ctaText = "Submit";
           this.ctaLink = false;
-          this.ctaMethod = false;
+          this.ctaMethod = "submitToCS";
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
             {
@@ -390,7 +406,8 @@ export default {
           this.ctaImage = "freezer.png";
           this.ctaText = "Help with defrosting";
           this.ctaMethod = false;
-          this.ctaLink = 'https://help.bellaandduke.com/hc/en-gb/articles/360015560657-Defrosting-your-food';
+          this.ctaLink =
+            "https://help.bellaandduke.com/hc/en-gb/articles/360015560657-Defrosting-your-food";
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
             {
@@ -412,7 +429,8 @@ export default {
           this.ctaImage = "checklist.png";
           this.ctaText = "Modify subscription";
           this.ctaMethod = false;
-          this.ctaLink = 'https://hello.bellaandduke.com/member/subscription-changes';
+          this.ctaLink =
+            "https://hello.bellaandduke.com/member/subscription-changes";
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
             {
@@ -434,7 +452,8 @@ export default {
           this.ctaImage = "BnDLogo.png";
           this.ctaText = "Modify subscription";
           this.ctaMethod = false;
-          this.ctaLink = 'https://hello.bellaandduke.com/member/subscription-changes';
+          this.ctaLink =
+            "https://hello.bellaandduke.com/member/subscription-changes";
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = false;
           break;
@@ -442,7 +461,7 @@ export default {
           this.header = `Sorry for your loss`;
           this.message = `Losing a member of the family is never easy, but we are here to help in any way we can.`;
           this.videoLink = false;
-          this.ctaImage = "BnDLogo.png";
+          this.ctaImage = "saddog.png";
           this.ctaText = "Cancel";
           this.ctaLink = false;
           this.ctaMethod = "cancelled";

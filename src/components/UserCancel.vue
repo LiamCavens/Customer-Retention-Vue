@@ -46,6 +46,13 @@
 
     <button
       class="bnd-btn white-btn button"
+      @click="handleButton({ manageType: 'example2' })"
+    >
+      Return to portal
+    </button>
+
+    <button
+      class="bnd-btn white-btn button"
       @click="handleButton({ manageType: 'secondChance' })"
       :disabled="!resolveType"
     >

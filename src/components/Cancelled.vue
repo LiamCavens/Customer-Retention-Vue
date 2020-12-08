@@ -24,7 +24,7 @@
       class="link"
       href="#"
       style="margin-top: 20px; font-size: 12px"
-      @click="handleButton({ manageType: 'secondChance' })"
+      @click="handleButton({ manageType: 'cancel' })"
       >Back</a
     >
   </div>

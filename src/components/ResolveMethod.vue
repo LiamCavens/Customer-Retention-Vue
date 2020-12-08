@@ -44,7 +44,6 @@
         <button
           v-if="ctaText"
           class="bnd-btn green-btn"
-          @click="handleCta(ctaMethod)"
         >
           {{ ctaText }}
         </button>
@@ -169,7 +168,7 @@ export default {
           this.videoLink = false;
           this.ctaImage = "BD-121.jpg";
           this.ctaText = "Order now";
-          this.ctaLink = false;
+          this.ctaLink = 'https://hello.bellaandduke.com/member/product-details/76';
           this.ctaMethod = false;
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
@@ -234,7 +233,7 @@ export default {
           this.message = `If you have run out of freezer space, you can switch to a smaller box and adjust how often you recieve it.`;
           this.videoLink = false;
           this.ctaImage = "boxsizesg.png";
-          this.ctaLink = false;
+          this.ctaLink = 'https://hello.bellaandduke.com/member/subscription-change-order-size';
           this.ctaText = "Change delivery size";
           this.ctaMethod = false;
           this.buttonsHeader = `What about these issues?`;
@@ -255,7 +254,7 @@ export default {
           this.header = `Are you taking the dog with you?`;
           this.message = `You can update your delivery address, to save taking the food with you.`;
           this.videoLink = false;
-          this.ctaLink = false;
+          this.ctaLink = 'https://hello.bellaandduke.com/member/form-address';
           this.ctaImage = "holidaydog.png";
           this.ctaText = "Update delivery address";
           this.ctaMethod = false;
@@ -300,7 +299,7 @@ export default {
           this.message = `We offer smaller box sizes, which will lower your order price`;
           this.videoLink = false;
           this.ctaImage = "boxsizesg.png";
-          this.ctaLink = false;
+          this.ctaLink = 'https://hello.bellaandduke.com/member/subscription-change-order-size';
           this.ctaText = "Change delivery size";
           this.ctaMethod = false;
           this.buttonsHeader = `What about these issues?`;
@@ -323,7 +322,7 @@ export default {
           this.videoLink = false;
           this.ctaImage = "boxsizeso.png";
           this.ctaText = "Change delivery size";
-          this.ctaLink = false;
+          this.ctaLink = 'https://hello.bellaandduke.com/member/subscription-change-order-size';
           this.ctaMethod = false;
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
@@ -343,7 +342,7 @@ export default {
           this.header = `Quality food for healthy pets`;
           this.message = `All of our meals are designed to support your pet's health. They are made from the highest quslity, 100% natural ingredients, carefully sourced from British & Irish farms.`;
           this.videoLink = false;
-          this.ctaImage = "chickenbox.jpg";
+          this.ctaImage = "chickenbox.png";
           this.ctaText = "Find out more";
           this.ctaMethod = false;
           
@@ -388,7 +387,7 @@ export default {
           this.header = `Frozen to lock in nutrients`;
           this.message = `Our natural ingredients are simple mixed together and frozen to lock in nutrients. This removes the need for nasty preservatives.`;
           this.videoLink = false;
-          this.ctaImage = "BnDLogo.png";
+          this.ctaImage = "freezer.png";
           this.ctaText = "Help with defrosting";
           this.ctaMethod = false;
           this.ctaLink = 'https://help.bellaandduke.com/hc/en-gb/articles/360015560657-Defrosting-your-food';
@@ -410,10 +409,10 @@ export default {
           this.header = `Take control of your customer portal`;
           this.message = `Auto-deliveries mean you won't run out of food. However, if you want to manage this manually you can adjust delivery schedule, payment method and order details, in your customer portal.`;
           this.videoLink = false;
-          this.ctaImage = "BnDLogo.png";
+          this.ctaImage = "checklist.png";
           this.ctaText = "Modify subscription";
           this.ctaMethod = false;
-          this.ctaLink = false;
+          this.ctaLink = 'https://hello.bellaandduke.com/member/subscription-changes';
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
             {
@@ -435,7 +434,7 @@ export default {
           this.ctaImage = "BnDLogo.png";
           this.ctaText = "Modify subscription";
           this.ctaMethod = false;
-          this.ctaLink = false;
+          this.ctaLink = 'https://hello.bellaandduke.com/member/subscription-changes';
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = false;
           break;

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img class="headerLogo" alt="BnD Logo" src="./assets/BnDinline.png" />
+    <img class="headerLogo" alt="BnD Logo" src="https://bellaandduke.imgix.net/2020/12/BnDinline.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=d30968b7b30bde35ef1d41e4f8351d7c" />
     <Retention />
   </div>
 </template>

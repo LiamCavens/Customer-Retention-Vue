@@ -39,12 +39,9 @@
     </div>
 
     <div style="width: 100%">
-      <img
-        v-if="ctaImage"
-        class="cta-img"
-        :src="require(`../assets/${ctaImage}`)"
-        alt="methodImage"
-      />
+      <div v-if="ctaImage" class="image-div">
+        <img class="cta-img" :class="{'img-resize': reason === 'movingFood' || reason === 'dontWantSubscription'}" :src="ctaImage" alt="methodImage" />
+      </div>
       <a v-if="ctaLink" :href="ctaLink" target="_blank">
         <button v-if="ctaText" class="bnd-btn green-btn">
           {{ ctaText }}
@@ -67,11 +64,7 @@
         :key="index"
         @click="handleResolve({ resolveType: method.resolveMethod })"
       >
-        <img
-          class="resolve-img"
-          :src="require(`../assets/${method.icon}.png`)"
-          :alt="method.icon"
-        />
+        <img class="resolve-img" :src="method.icon" />
         <p class="resolve-btn-text">{{ method.text }}</p>
       </div>
     </div>
@@ -155,7 +148,7 @@ export default {
         case "notEatFood":
           this.header = `Scavenger Method`;
           this.message = `If your dog has become a little picky, then try the Scavenger 1-2-3 method. Developed by our in-house canine behaviourist, Caroline, it workes with 9/10 dogs:`;
-        //   this.videoLink = `https://fast.wistia.com/embed/medias/rk0nnpgwi8`;
+          //   this.videoLink = `https://fast.wistia.com/embed/medias/rk0nnpgwi8`;
           this.buttonsHeader = `What about these issues?`;
           this.ctaImage = false;
           this.ctaLink = false;
@@ -163,12 +156,14 @@ export default {
           this.ctaMethod = false;
           this.resolveMethods = [
             {
-              icon: "phone",
+              icon:
+                "https://bellaandduke.imgix.net/2020/12/phone.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=5aad099f1f86c91077d07f6155d44f81",
               text: `Arrange a call with our in-house behaviourist`,
               resolveMethod: "callResolve",
             },
             {
-              icon: "bowl",
+              icon:
+                "https://bellaandduke.imgix.net/2020/12/bowl.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=421d2c8a910e2090c70705a5fe71f02d",
               text: `Does your dog prefer dry food? Try our raw dry dog food`,
               resolveMethod: "preferDry",
             },
@@ -178,7 +173,8 @@ export default {
           this.header = `Raw Dry dog food`;
           this.message = `If your dog is used to kibble, then they may prefer a bit of crunch. We offer Raw Dry dog food, natural raw ingredients simply dried.`;
           this.videoLink = false;
-          this.ctaImage = "BD-121.jpg";
+          this.ctaImage =
+            "https://bellaandduke.imgix.net/2020/12/BD-121.jpg?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=b41a0169ee42c8473fd53b84b6cf0ba2";
           this.ctaText = "Order now";
           this.ctaLink =
             "https://hello.bellaandduke.com/member/product-details/76";
@@ -186,12 +182,14 @@ export default {
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
             {
-              icon: "phone",
+              icon:
+                "https://bellaandduke.imgix.net/2020/12/phone.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=5aad099f1f86c91077d07f6155d44f81",
               text: `Arrange a call with our in-house behaviourist`,
               resolveMethod: "callResolve",
             },
             {
-              icon: "clipboard",
+              icon:
+                "https://bellaandduke.imgix.net/2020/12/clipboard.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=47d21217810e15c8440be3847f40a5a1",
               text: `try our effective Scavenger Method`,
               resolveMethod: "notEatFood",
             },
@@ -201,7 +199,8 @@ export default {
           this.header = `Speak to our behaviourist`;
           this.message = `Some dogs need a little extra help. Arrange a call with our in-house canine behaviourist, Caroline.`;
           this.videoLink = false;
-          this.ctaImage = "bd_caroline.png";
+          this.ctaImage =
+            "https://bellaandduke.imgix.net/2020/12/bd_caroline.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=74bad7bedb13e0e59deef757ea2056ff";
           this.ctaText = "Request call";
           this.ctaLink =
             "https://www.bellaandduke.com/dog-mealtime-advice-webinar/";
@@ -209,12 +208,14 @@ export default {
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
             {
-              icon: "clipboard",
+              icon:
+                "https://bellaandduke.imgix.net/2020/12/clipboard.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=47d21217810e15c8440be3847f40a5a1",
               text: `try our effective Scavenger Method`,
               resolveMethod: "notEatFood",
             },
             {
-              icon: "bowl",
+              icon:
+                "https://bellaandduke.imgix.net/2020/12/bowl.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=421d2c8a910e2090c70705a5fe71f02d",
               text: `Does your dog prefer dry food? Try our raw dry dog food`,
               resolveMethod: "preferDry",
             },
@@ -231,12 +232,14 @@ export default {
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
             {
-              icon: "box",
+              icon:
+                "https://bellaandduke.imgix.net/2020/12/box.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=42d9f71df61d60e0eb5df3332ad46652",
               text: `Adjust delivery size`,
               resolveMethod: "adjustDelivery",
             },
             {
-              icon: "pin",
+              icon:
+                "https://bellaandduke.imgix.net/2020/12/pin.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=0a9a0289da03677e71caa7ce99de834e",
               text: `Update my delivery address?`,
               resolveMethod: "newAddress",
             },
@@ -246,7 +249,8 @@ export default {
           this.header = `Adjust Delivery Size`;
           this.message = `If you have run out of freezer space, you can switch to a smaller box and adjust how often you recieve it.`;
           this.videoLink = false;
-          this.ctaImage = "boxsizesg.png";
+          this.ctaImage =
+            "https://bellaandduke.imgix.net/2020/12/boxsizesg.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=e3d212552f307b1f1687a5285d73275f";
           this.ctaLink =
             "https://hello.bellaandduke.com/member/subscription-change-order-size";
           this.ctaText = "Change delivery size";
@@ -254,12 +258,14 @@ export default {
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
             {
-              icon: "pin",
+              icon:
+                "https://bellaandduke.imgix.net/2020/12/pin.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=0a9a0289da03677e71caa7ce99de834e",
               text: `Update my delivery address?`,
               resolveMethod: "newAddress",
             },
             {
-              icon: "bowl",
+              icon:
+                "https://bellaandduke.imgix.net/2020/12/bowl.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=421d2c8a910e2090c70705a5fe71f02d",
               text: `Compare Bella & Duke with dry brands`,
               resolveMethod: "movingFood",
             },
@@ -270,18 +276,20 @@ export default {
           this.message = `You can update your delivery address, to save taking the food with you.`;
           this.videoLink = false;
           this.ctaLink = "https://hello.bellaandduke.com/member/form-address";
-          this.ctaImage = "holidaydog.png";
+          this.ctaImage = "https://bellaandduke.imgix.net/2020/12/holidaydog.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=8d113ee2b8f7ba57db940b6558a19709";
           this.ctaText = "Update delivery address";
           this.ctaMethod = false;
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
             {
-              icon: "bowl",
+              icon:
+                "https://bellaandduke.imgix.net/2020/12/bowl.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=421d2c8a910e2090c70705a5fe71f02d",
               text: `Moving to another food`,
               resolveMethod: "movingFood",
             },
             {
-              icon: "calendar",
+              icon:
+                "https://bellaandduke.imgix.net/2020/12/calendar.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=42e32fe3a7d5e05ea3f44008ce2e98ff",
               text: `I don't need it anymore`,
               resolveMethod: "dontNeedAnymore",
             },
@@ -291,19 +299,22 @@ export default {
           this.header = `Compare us with your new food`;
           this.message = `We believe our food is the best for your dog and we're willing to prove it!`;
           this.videoLink = false;
-          this.ctaImage = "rawvdry.png";
+          this.ctaImage =
+            "https://bellaandduke.imgix.net/2020/12/rawvdry.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=c7d8121615bfe3d9c5117e3c6372fdd6";
           this.ctaLink = "https://www.bellaandduke.com/how-it-works/";
           this.ctaText = "Compare now";
           this.ctaMethod = false;
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
             {
-              icon: "calendar",
+              icon:
+                "https://bellaandduke.imgix.net/2020/12/calendar.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=42e32fe3a7d5e05ea3f44008ce2e98ff",
               text: `I don't need it anymore`,
               resolveMethod: "dontNeedAnymore",
             },
             {
-              icon: "clipboard",
+              icon:
+                "https://bellaandduke.imgix.net/2020/12/clipboard.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=47d21217810e15c8440be3847f40a5a1",
               text: `Adjust delivery size`,
               resolveMethod: "adjustDelivery",
             },
@@ -313,7 +324,8 @@ export default {
           this.header = `Adjust Delivery Size`;
           this.message = `We offer smaller box sizes, which will lower your order price`;
           this.videoLink = false;
-          this.ctaImage = "boxsizesg.png";
+          this.ctaImage =
+            "https://bellaandduke.imgix.net/2020/12/boxsizesg.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=e3d212552f307b1f1687a5285d73275f";
           this.ctaLink =
             "https://hello.bellaandduke.com/member/subscription-change-order-size";
           this.ctaText = "Change delivery size";
@@ -321,12 +333,14 @@ export default {
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
             {
-              icon: "box",
+              icon:
+                "https://bellaandduke.imgix.net/2020/12/box.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=42d9f71df61d60e0eb5df3332ad46652",
               text: `Daily price too high`,
               resolveMethod: "dailyTooMuch",
             },
             {
-              icon: "healthyheart",
+              icon:
+                "https://bellaandduke.imgix.net/2020/12/healthyheart.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=09fef542083dcefdf1b3908598a1ba1d",
               text: `I can't afford it`,
               resolveMethod: "cantAfford",
             },
@@ -336,7 +350,8 @@ export default {
           this.header = `Adjust Delivery Size`;
           this.message = `We offer larger box sizes, which come with a discount`;
           this.videoLink = false;
-          this.ctaImage = "boxsizeso.png";
+          this.ctaImage =
+            "https://bellaandduke.imgix.net/2020/12/boxsizeso.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=2fd97f25610ae56bf0da5275a16de3ef";
           this.ctaText = "Change delivery size";
           this.ctaLink =
             "https://hello.bellaandduke.com/member/subscription-change-order-size";
@@ -344,12 +359,14 @@ export default {
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
             {
-              icon: "box",
+              icon:
+                "https://bellaandduke.imgix.net/2020/12/box.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=42d9f71df61d60e0eb5df3332ad46652",
               text: `Order price too high`,
               resolveMethod: "orderTooMuch",
             },
             {
-              icon: "healthyheart",
+              icon:
+                "https://bellaandduke.imgix.net/2020/12/healthyheart.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=09fef542083dcefdf1b3908598a1ba1d",
               text: `I can't afford it`,
               resolveMethod: "cantAfford",
             },
@@ -359,7 +376,7 @@ export default {
           this.header = `Quality food for healthy pets`;
           this.message = `All of our meals are designed to support your pet's health. They are made from the highest quslity, 100% natural ingredients, carefully sourced from British & Irish farms.`;
           this.videoLink = false;
-          this.ctaImage = "chickenbox.png";
+          this.ctaImage = "https://bellaandduke.imgix.net/2020/12/chickenbox.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=2611ee9fb274001fbf79e088e74bbd9f";
           this.ctaText = "Find out more";
           this.ctaMethod = false;
 
@@ -367,12 +384,14 @@ export default {
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
             {
-              icon: "box",
+              icon:
+                "https://bellaandduke.imgix.net/2020/12/box.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=42d9f71df61d60e0eb5df3332ad46652",
               text: `Daily price too high`,
               resolveMethod: "dailyTooMuch",
             },
             {
-              icon: "bowl",
+              icon:
+                "https://bellaandduke.imgix.net/2020/12/bowl.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=421d2c8a910e2090c70705a5fe71f02d",
               text: `Order price too high`,
               resolveMethod: "dailyTooMuch",
             },
@@ -389,12 +408,14 @@ export default {
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
             {
-              icon: "frozen",
+              icon:
+                "https://bellaandduke.imgix.net/2020/12/frozen.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=9ecc7544621cec132d2e10c67e9d3bd6",
               text: `I don't want to defrost`,
               resolveMethod: "notDefrost",
             },
             {
-              icon: "clipboard",
+              icon:
+                "https://bellaandduke.imgix.net/2020/12/clipboard.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=47d21217810e15c8440be3847f40a5a1",
               text: `I dont want a subscription`,
               resolveMethod: "dontWantSubscription",
             },
@@ -404,7 +425,7 @@ export default {
           this.header = `Frozen to lock in nutrients`;
           this.message = `Our natural ingredients are simple mixed together and frozen to lock in nutrients. This removes the need for nasty preservatives.`;
           this.videoLink = false;
-          this.ctaImage = "freezer.png";
+          this.ctaImage = "https://bellaandduke.imgix.net/2020/12/freezer.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=9ec205ca3d41db1fb940cb184d678284";
           this.ctaText = "Help with defrosting";
           this.ctaMethod = false;
           this.ctaLink =
@@ -412,12 +433,14 @@ export default {
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
             {
-              icon: "clipboard",
+              icon:
+                "https://bellaandduke.imgix.net/2020/12/clipboard.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=47d21217810e15c8440be3847f40a5a1",
               text: `I dont want a subscription`,
               resolveMethod: "dontWantSubscription",
             },
             {
-              icon: "van",
+              icon:
+                "https://bellaandduke.imgix.net/2020/12/van.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=8cf718fa6656cf3467dc9dddd850697d",
               text: `Delivery issues`,
               resolveMethod: "deliveryIssues",
             },
@@ -427,7 +450,8 @@ export default {
           this.header = `Take control of your customer portal`;
           this.message = `Auto-deliveries mean you won't run out of food. However, if you want to manage this manually you can adjust delivery schedule, payment method and order details, in your customer portal.`;
           this.videoLink = false;
-          this.ctaImage = "checklist.png";
+          this.ctaImage =
+            "https://bellaandduke.imgix.net/2020/12/checklist.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=027edaafdb8dc09feba4938db708c935";
           this.ctaText = "Modify subscription";
           this.ctaMethod = false;
           this.ctaLink =
@@ -435,12 +459,14 @@ export default {
           this.buttonsHeader = `What about these issues?`;
           this.resolveMethods = [
             {
-              icon: "frozen",
+              icon:
+                "https://bellaandduke.imgix.net/2020/12/frozen.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=9ecc7544621cec132d2e10c67e9d3bd6",
               text: `I don't want to defrost`,
               resolveMethod: "notDefrost",
             },
             {
-              icon: "van",
+              icon:
+                "https://bellaandduke.imgix.net/2020/12/van.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=8cf718fa6656cf3467dc9dddd850697d",
               text: `Delivery issues`,
               resolveMethod: "deliveryIssues",
             },
@@ -450,19 +476,20 @@ export default {
           this.header = `Customise your order`;
           this.message = `Many intolerances are a result of a processed diet, focused on the same protein day in day out. We belive that a varied diet resolves this, however you can adjust flavours or change range here`;
           this.videoLink = false;
-          this.ctaImage = "BnDLogo.png";
+          this.ctaImage =
+            "https://bellaandduke.imgix.net/2020/12/range.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=7b52179bd368175131f3918a02aedfb4";
           this.ctaText = "Modify subscription";
           this.ctaMethod = false;
           this.ctaLink =
             "https://hello.bellaandduke.com/member/subscription-changes";
-          this.buttonsHeader = `What about these issues?`;
+          this.buttonsHeader = '';
           this.resolveMethods = false;
           break;
         case "petPassed":
           this.header = `Sorry for your loss`;
           this.message = `Losing a member of the family is never easy, but we are here to help in any way we can.`;
           this.videoLink = false;
-          this.ctaImage = "saddog.png";
+          this.ctaImage = "https://bellaandduke.imgix.net/2020/12/saddog.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=a116ba9859d18e77e2fccae9d06dc6eb";
           this.ctaText = "Cancel";
           this.ctaLink = false;
           this.ctaMethod = "cancelled";
@@ -535,9 +562,18 @@ export default {
   height: 80px;
 }
 
+.image-div {
+  height: 190px;
+}
+
 .cta-img {
   height: 190px;
   border-radius: 50%;
+}
+
+.img-resize {
+    border-radius: 0 !important;
+    width: 100%;
 }
 
 .cancel-box {

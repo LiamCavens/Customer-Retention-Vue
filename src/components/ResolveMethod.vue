@@ -39,7 +39,7 @@
     </div>
 
     <div style="width: 100%">
-      <div v-if="ctaImage" class="image-div">
+      <div class="image-div">
         <img class="cta-img" :class="{'img-resize': reason === 'movingFood' || reason === 'dontWantSubscription'}" :src="ctaImage" alt="methodImage" />
       </div>
       <a v-if="ctaLink" :href="ctaLink" target="_blank">

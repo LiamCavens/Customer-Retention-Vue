@@ -49,7 +49,6 @@ export default {
   methods: {
     getIconUrl(iconUrl) {
       if (!iconUrl) return;
-      return require(`../../assets/${iconUrl}.png`);
     },
     toggle: function () {
       setTimeout(() => {

@@ -1,7 +1,5 @@
 <template>
   <div class="retention-component">
-    <!-- <h3 class="home-retention-bold">Subscription</h3>
-    <img class="home-retention-icon" src="../assets/icon_calendar_white.png" alt="calendarIcon" /> -->
     <p class="home-retention-bold">Your Next Delivery</p>
     <p class="home-retention-text">
       {{ nextDelivery | moment("dddd, Do MMMM YYYY") }}

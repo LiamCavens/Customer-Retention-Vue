@@ -2,7 +2,6 @@ import Vue from "vue";
 import App from "./App.vue";
 import vSelect from "vue-select";
 import VCalendar from "v-calendar";
-// import "v-calendar/lib/v-calendar.min.css";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";

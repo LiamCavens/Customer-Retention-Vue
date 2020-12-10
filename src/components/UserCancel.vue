@@ -38,7 +38,8 @@
           <ResolveMethod
             v-if="resolveType"
             :reason="resolveType"
-            @manageResolve="handleButton"
+            @manageResolve="handleResolve"
+            @manageSubmit="handleButton"
           />
         </div>
       </div>

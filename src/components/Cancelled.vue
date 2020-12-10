@@ -1,24 +1,7 @@
 <template>
   <div class="retention-component">
     <h2 class="cancel-header">Your subscription has been cancelled</h2>
-    <pre>
- 
-   ,_____ ,
-  ,._ ,_. 7\
- j `-'     /
- |o_, o    \
-.`_y_`-,'   !
-|/   `, `._ `-,
-|_     \   _.'*\
-  >--,-'`-'*_*'``---.
-  |\_* _*'-'         '
- /    `               \
- \.         _ .       /
-  '`._     /   )     /
-   \  |`-,-|  /c-'7 /
-    ) \ (_,| |   / (_
-   ((_/   ((_;)  \_)))
-    </pre>
+    <img class="cancel-img" src="https://bellaandduke.imgix.net/2020/12/saddog.png?auto=compress%2Cformat&ixlib=php-3.3.0&q=60&s=a116ba9859d18e77e2fccae9d06dc6eb" alt="Sad leaving dog">
 
     <a
       class="link"
@@ -48,4 +31,8 @@ export default {
 </script>
 
 <style scoped>
+.cancel-img {
+    height: 200px;
+    width: 200px;
+}
 </style>

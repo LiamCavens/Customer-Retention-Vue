@@ -132,10 +132,10 @@ export default {
     },
     handleCta(ctaType) {
       if (ctaType === "cancelled") {
-        this.handleResolve({ manageType: ctaType });
+        this.handleButton({ manageType: ctaType });
       }
       if (ctaType === "example2") {
-        this.handleResolve({ manageType: ctaType });
+        this.handleButton({ manageType: ctaType });
       }
       if (ctaType === "submitToCS") {
         this.submittedToCS = true;

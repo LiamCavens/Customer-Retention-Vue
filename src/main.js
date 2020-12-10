@@ -1,4 +1,5 @@
 import Vue from "vue";
+import VueRouter from "vue-router";
 import App from "./App.vue";
 import vSelect from "vue-select";
 import VCalendar from "v-calendar";
@@ -18,6 +19,7 @@ Vue.component("v-select", vSelect);
 
 Vue.config.productionTip = false;
 
+Vue.use(VueRouter);
 Vue.use(VCalendar);
 Vue.use(require("vue-moment"));
 

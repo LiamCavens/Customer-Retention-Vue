@@ -134,13 +134,13 @@ export default {
       if (ctaType === "cancelled") {
         this.handleButton({ manageType: ctaType });
       }
-      if (ctaType === "example2") {
+      if (ctaType === "cancel") {
         this.handleButton({ manageType: ctaType });
       }
       if (ctaType === "submitToCS") {
         this.submittedToCS = true;
         this.ctaText = "Return to portal";
-        this.ctaMethod = "example2";
+        this.ctaMethod = "cancel";
       }
     },
     loadReason() {

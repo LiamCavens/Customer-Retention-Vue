@@ -47,7 +47,7 @@
 
     <button
       class="bnd-btn white-btn button"
-      @click="handleButton({ manageType: 'example2' })"
+      @click="handleButton({ manageType: 'cancel' })"
     >
       Return to portal
     </button>
@@ -64,7 +64,7 @@
       class="link"
       href="#"
       style="margin-top: 20px; font-size: 12px"
-      @click="handleButton({ manageType: 'example2' })"
+      @click="handleButton({ manageType: 'cancel' })"
       >Back</a
     >
   </div>

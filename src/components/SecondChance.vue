@@ -1,16 +1,17 @@
 <template>
   <div class="retention-component">
-    <h2 class="cancel-header">Everyone deserves a second chance</h2>
+    <h2 class="cancel-header">We hate to see you go</h2>
     <p class="cancel-message">
-      We are confident that a natural raw diet is the best choice for <b>{dogName}</b>. With a bit of encouragement, we are sure that they will be happier
-      and healthier continuing with Bella & Duke, so we can offer you an
-      exclusive one-off discount on your next box:
+      Mark & Tony are gutted that you are thinking of cancelling. Not only will
+      you will stop recieving scheduled deliveries of natural, healthy raw food,
+      but you will also lose access to exclusive perks like Bella & Duke
+      RAWARDS.
     </p>
     <button
       class="bnd-btn green-btn button"
-      @click="handleButton({ manageType: 'example2' })"
+      @click="handleButton({ manageType: 'cancel' })"
     >
-      Try again with 30% off
+      Return to portal
     </button>
     <button
       class="bnd-btn white-btn button"
@@ -49,8 +50,8 @@ export default {
 
 <style scoped>
 .retention-component {
-    padding-left: 30px;
-    padding-right: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .cancel-header {
@@ -58,7 +59,7 @@ export default {
 }
 
 .bnd-btn {
-    width: 100%;
+  width: 100%;
 }
 
 button:disabled,

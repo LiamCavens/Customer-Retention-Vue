@@ -1,30 +1,6 @@
 <template>
   <div class="retention">
     <div class="retention-components">
-      <HomeRetention
-        v-if="manageType === 'example1'"
-        @manageSubmit="handleManage"
-      />
-      <HomeRetention2
-        v-if="manageType === 'example2'"
-        @manageSubmit="handleManage"
-      />
-      <ManageAccount
-        v-if="manageType === 'account'"
-        @manageSubmit="handleManage"
-      />
-      <ManageDelivery
-        v-if="manageType === 'deliveries'"
-        @manageSubmit="handleManage"
-      />
-      <ManagePetsAndFood
-        v-if="manageType === 'petsAndFood'"
-        @manageSubmit="handleManage"
-      />
-      <ManageTreatsAndAddons
-        v-if="manageType === 'treatsAndAddons'"
-        @manageSubmit="handleManage"
-      />
       <UserCancel
         v-if="manageType === 'cancel'"
         :cancelReason="cancelReason"
@@ -58,16 +34,6 @@ import Cancelled from "./Cancelled";
 import SecondChance from "./SecondChance";
 import UserCancel from "./UserCancel";
 import UserFinalCancel from "./UserFinalCancel";
-import HomeRetention from "./HomeRetention";
-import HomeRetention2 from "./HomeRetention2";
-import ManageAccount from "./ManageAccount";
-import ManageDelivery from "./ManageDelivery";
-import ManagePetsAndFood from "./ManagePetsAndFood";
-import ManageTreatsAndAddons from "./ManageTreatsAndAddons";
-
-// RESOLVE COMPONENETS
-
-// import ResolveCall from "./ResolveCall";
 
 export default {
   name: "retentionv2",
@@ -75,14 +41,8 @@ export default {
     Cancelled,
     SecondChance,
     UserCancel,
-    // ResolveCall,
+
     UserFinalCancel,
-    HomeRetention,
-    HomeRetention2,
-    ManageAccount,
-    ManageDelivery,
-    ManagePetsAndFood,
-    ManageTreatsAndAddons,
   },
   props: {},
   data: () => {
